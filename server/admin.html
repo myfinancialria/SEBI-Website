@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex, nofollow" />
+<title>MyFinancial — admin</title>
+<style>
+:root {
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  --font-serif: Georgia, "Times New Roman", serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --ink: #14141a; --ink-dim: #55555f; --ink-faint: #6b6b76;
+  --paper: #fbfbfa; --paper-2: #ffffff; --paper-3: #f2f2f0;
+  --line: #e5e5e2; --line-2: #d2d2ce; --accent: #3355e8; --up: #16a163; --down: #d33f45; --warn: #8a5a0d;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink: #f2f2f4; --ink-dim: #9a9aa4; --ink-faint: #8f8f9a;
+    --paper: #08080a; --paper-2: #0e0e11; --paper-3: #16161a;
+    --line: #1e1e24; --line-2: #2b2b33; --accent: #6f8cff; --up: #2ecc82; --down: #f2555a; --warn: #e8a33d;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font-sans); font-size: 15px; line-height: 1.6; }
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+a { color: var(--accent); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+header { border-bottom: 1px solid var(--line); background: var(--paper); position: sticky; top: 0; z-index: 10; }
+.hrow { display: flex; align-items: center; gap: 18px; padding: 12px 0; flex-wrap: wrap; }
+.logo { font-family: var(--font-serif); font-style: italic; font-size: 18px; }
+.logo b { font-family: var(--font-sans); font-style: normal; font-weight: 800; letter-spacing: -.04em; }
+.tag { font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: .14em; color: var(--ink-faint); }
+.spacer { margin-left: auto; }
+h1 { font-size: 24px; font-weight: 800; letter-spacing: -.03em; margin: 0 0 4px; }
+h2 { font-size: 16px; font-weight: 700; letter-spacing: -.01em; margin: 0; }
+p.hint { color: var(--ink-dim); font-size: 13.5px; margin: 4px 0 0; }
+.card { border: 1px solid var(--line); background: var(--paper-2); padding: 20px; margin-top: 20px; }
+.tabs { display: flex; gap: 2px; margin-top: 22px; flex-wrap: wrap; }
+.tab { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: .1em;
+       padding: 9px 14px; border: 1px solid var(--line); background: var(--paper-2); color: var(--ink-faint); cursor: pointer; }
+.tab[aria-selected="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+label { display: block; font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: .12em; color: var(--ink-faint); margin-bottom: 5px; }
+input, select, textarea, button { font-family: inherit; font-size: 14px; color: var(--ink); }
+input, select, textarea { width: 100%; background: var(--paper); border: 1px solid var(--line-2); padding: 8px 10px; border-radius: 0; }
+input[type="number"] { font-variant-numeric: tabular-nums; }
+textarea { resize: vertical; }
+.btn { display: inline-block; cursor: pointer; border: 1px solid var(--ink); background: var(--ink); color: var(--paper);
+       padding: 10px 18px; font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: .12em; width: auto; }
+.btn.ghost { background: transparent; color: var(--ink); border-color: var(--ink-dim); }
+.btn:disabled { opacity: .5; cursor: progress; }
+.row { display: grid; gap: 14px; margin-top: 16px; }
+@media (min-width: 720px) { .row.c2 { grid-template-columns: 1fr 1fr; } .row.c3 { grid-template-columns: repeat(3, 1fr); } }
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th, td { border-top: 1px solid var(--line); padding: 8px 10px; text-align: left; vertical-align: top; }
+thead th { background: var(--paper-3); font-size: 12px; }
+td.num input { padding: 6px 8px; }
+.scroll { overflow-x: auto; margin-top: 14px; border: 1px solid var(--line); }
+.msg { margin-top: 14px; font-size: 13.5px; min-height: 1.2em; }
+.msg.ok { color: var(--up); } .msg.bad { color: var(--down); }
+.pill { font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: .1em; padding: 2px 7px; border: 1px solid var(--line-2); }
+.pill.new { border-color: var(--accent); color: var(--accent); }
+.pill.replied { border-color: var(--up); color: var(--up); }
+.warnbar { border: 1px solid var(--warn); color: var(--warn); padding: 10px 14px; font-size: 13px; margin-top: 16px; }
+.hidden { display: none !important; }
+footer { color: var(--ink-faint); font-size: 12.5px; padding: 40px 0; }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap hrow">
+    <span class="logo">my<b>financial</b></span>
+    <span class="tag">Admin</span>
+    <span class="spacer"></span>
+    <a class="tag" href="/" target="_blank" rel="noopener">View site</a>
+    <button class="btn ghost hidden" id="logout" type="button">Sign out</button>
+  </div>
+</header>
+
+<main class="wrap" style="padding-bottom:60px;">
+
+  <section id="login-view" class="card" style="max-width:420px;">
+    <h1>Sign in</h1>
+    <p class="hint">Use the password set in <code>ADMIN_PASSWORD</code>.</p>
+    <form id="login-form" style="margin-top:18px;">
+      <label for="pw">Password</label>
+      <input id="pw" type="password" autocomplete="current-password" required />
+      <p style="margin-top:16px;"><button class="btn" type="submit">Sign in</button></p>
+      <p class="msg" id="login-msg" role="status" aria-live="polite"></p>
+    </form>
+    <div class="warnbar hidden" id="default-pw">The admin password is still the default <code>change-me</code>. Set <code>ADMIN_PASSWORD</code> before this server is reachable from the internet.</div>
+  </section>
+
+  <div id="app" class="hidden">
+    <div class="tabs" role="tablist">
+      <button class="tab" role="tab" data-view="complaints" aria-selected="true">Complaint data</button>
+      <button class="tab" role="tab" data-view="enquiries" aria-selected="false">Enquiries</button>
+      <button class="tab" role="tab" data-view="site" aria-selected="false">Site details</button>
+    </div>
+
+    <!-- ------------------------------------------------ complaints -->
+    <section id="view-complaints" class="view">
+      <div class="card">
+        <h2>Month to publish</h2>
+        <p class="hint">SEBI requires this on the homepage within 7 days of the month ending. Enter the figures exactly as you report them: the site builds the Annexure C table, the six-month trend and the annual table from these numbers.</p>
+        <div class="row c2">
+          <div>
+            <label for="month">Month (YYYY-MM)</label>
+            <input id="month" type="month" />
+          </div>
+          <div>
+            <label for="imp">Complaints due to impersonation by another entity</label>
+            <input id="imp" type="number" min="0" step="1" value="0" />
+          </div>
+        </div>
+
+        <div class="scroll">
+          <table>
+            <thead>
+              <tr>
+                <th>Received from</th>
+                <th>Pending at end of last month</th>
+                <th>Received</th>
+                <th>Resolved</th>
+                <th>Total pending</th>
+                <th>Pending &gt; 3 months</th>
+                <th>Avg resolution (days)</th>
+              </tr>
+            </thead>
+            <tbody id="grid"></tbody>
+          </table>
+        </div>
+
+        <p style="margin-top:18px; display:flex; gap:10px; flex-wrap:wrap;">
+          <button class="btn" id="save-month" type="button">Save month</button>
+          <button class="btn ghost" id="dl-complaints" type="button">Download complaints.json</button>
+        </p>
+        <p class="hint">On a static host (GitHub Pages), download <code>complaints.json</code> and commit it to <code>data/complaints.json</code> — that is what the published page reads.</p>
+        <p class="msg" id="c-msg" role="status" aria-live="polite"></p>
+      </div>
+
+      <div class="card">
+        <h2>Months on record</h2>
+        <div class="scroll">
+          <table>
+            <thead><tr><th>Month</th><th>Received</th><th>Resolved</th><th>Pending</th><th>Impersonation</th><th></th></tr></thead>
+            <tbody id="months"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ------------------------------------------------ enquiries -->
+    <section id="view-enquiries" class="view hidden">
+      <div class="card">
+        <div style="display:flex; gap:14px; align-items:flex-end; flex-wrap:wrap;">
+          <div style="min-width:180px;">
+            <label for="filter">Show</label>
+            <select id="filter">
+              <option value="all">All enquiries</option>
+              <option value="new">New</option>
+              <option value="replied">Replied</option>
+              <option value="closed">Closed</option>
+            </select>
+          </div>
+          <span class="spacer"></span>
+          <button class="btn ghost" id="dl-csv" type="button">Download CSV</button>
+          <button class="btn ghost" id="test-notify" type="button">Send test notification</button>
+        </div>
+        <p class="msg" id="e-msg" role="status" aria-live="polite"></p>
+        <div class="scroll">
+          <table>
+            <thead>
+              <tr><th>Received</th><th>Name</th><th>Contact</th><th>Looking for</th><th>Message</th><th>Status</th><th>Notes</th><th></th></tr>
+            </thead>
+            <tbody id="enquiries"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ------------------------------------------------ site details -->
+    <section id="view-site" class="view hidden">
+      <div class="card">
+        <h2>Details shown on the website</h2>
+        <p class="hint">These replace the amber placeholders on the public page. Leave a field empty to keep whatever is written in the HTML.</p>
+        <div class="row c2">
+          <div><label for="s-basl_no">IAASB / BASL membership number</label><input id="s-basl_no" /></div>
+          <div><label for="s-upi_id">Validated UPI ID (@valid)</label><input id="s-upi_id" /></div>
+          <div><label for="s-audit_status">Compliance audit status</label><input id="s-audit_status" /></div>
+          <div><label for="s-audit_findings">Adverse audit findings</label><input id="s-audit_findings" /></div>
+          <div><label for="s-fee_ongoing">Ongoing advisory fee line</label><input id="s-fee_ongoing" /></div>
+          <div><label for="s-last_updated">Last updated (shown in the footer)</label><input id="s-last_updated" /></div>
+        </div>
+        <h2 style="margin-top:26px;">Research Analyst</h2>
+        <p class="hint">Setting this to "active" reveals the RA blocks on the live page. Make the same change in <code>index.html</code> (<code>data-ra-status="active"</code>) so the RA disclosures do not depend on JavaScript.</p>
+        <div class="row c3">
+          <div>
+            <label for="s-ra_status">RA registration</label>
+            <select id="s-ra_status"><option value="pending">pending</option><option value="active">active</option></select>
+          </div>
+          <div><label for="s-ra_reg_no">RA registration number</label><input id="s-ra_reg_no" placeholder="INH000000000" /></div>
+          <div><label for="s-raasb_no">RAASB membership number</label><input id="s-raasb_no" /></div>
+        </div>
+        <p style="margin-top:18px; display:flex; gap:10px; flex-wrap:wrap;">
+          <button class="btn" id="save-site" type="button">Save details</button>
+          <button class="btn ghost" id="dl-site" type="button">Download site.json</button>
+        </p>
+        <p class="msg" id="s-msg" role="status" aria-live="polite"></p>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="wrap">Enquiries and complaint figures are stored in SQLite on this server. Keep backups of <code>server/data.db</code>.</footer>
+
+<script>
+(function () {
+  "use strict";
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  var SOURCES = [["direct", "Directly from Investors"], ["scores", "SEBI (SCORES)"], ["other", "Other Sources (if any)"]];
+  var FIELDS = ["pending_last", "received", "resolved", "pending_total", "pending_gt3m", "avg_days"];
+  var MONTHS = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+  var data = { months: [] }, site = {};
+
+  function api(path, options) {
+    return fetch(path, Object.assign({ credentials: "same-origin", headers: { "Content-Type": "application/json" } }, options || {}))
+      .then(function (r) {
+        return r.json().catch(function () { return {}; }).then(function (body) {
+          if (!r.ok) throw new Error(body.error || ("HTTP " + r.status));
+          return body;
+        });
+      });
+  }
+  function say(el, text, kind) { el.textContent = text; el.className = "msg" + (kind ? " " + kind : ""); }
+  function monthLabel(ym) { var b = ym.split("-"); return MONTHS[parseInt(b[1], 10) - 1] + " " + b[0]; }
+  function sum(month, key) {
+    return SOURCES.reduce(function (t, s) { return t + ((month.rows[s[0]] || {})[key] || 0); }, 0);
+  }
+  function download(name, text, type) {
+    var blob = new Blob([text], { type: type || "application/json" });
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(blob); a.download = name;
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function () { URL.revokeObjectURL(a.href); }, 2000);
+  }
+
+  /* ---------------- grid ---------------- */
+  function buildGrid() {
+    var body = $("#grid");
+    body.textContent = "";
+    SOURCES.forEach(function (src) {
+      var tr = document.createElement("tr");
+      var th = document.createElement("th");
+      th.scope = "row"; th.textContent = src[1];
+      tr.appendChild(th);
+      FIELDS.forEach(function (f) {
+        var td = document.createElement("td");
+        td.className = "num";
+        var input = document.createElement("input");
+        input.type = "number"; input.min = "0"; input.value = "0";
+        input.step = f === "avg_days" ? "0.1" : "1";
+        input.id = "f-" + src[0] + "-" + f;
+        input.setAttribute("aria-label", src[1] + " — " + f.replace(/_/g, " "));
+        td.appendChild(input); tr.appendChild(td);
+      });
+      body.appendChild(tr);
+    });
+  }
+  function loadMonthIntoGrid(ym) {
+    var m = data.months.filter(function (x) { return x.month === ym; })[0];
+    $("#imp").value = m ? m.impersonation : 0;
+    SOURCES.forEach(function (src) {
+      FIELDS.forEach(function (f) {
+        var v = m && m.rows[src[0]] ? m.rows[src[0]][f] : 0;
+        $("#f-" + src[0] + "-" + f).value = v == null ? 0 : v;
+      });
+    });
+  }
+  function renderMonths() {
+    var body = $("#months");
+    body.textContent = "";
+    data.months.slice().reverse().forEach(function (m) {
+      var tr = document.createElement("tr");
+      function td(text) { var c = document.createElement("td"); c.textContent = text; tr.appendChild(c); }
+      td(monthLabel(m.month));
+      td(String(sum(m, "received")));
+      td(String(sum(m, "resolved")));
+      td(String(sum(m, "pending_total")));
+      td(String(m.impersonation));
+      var actions = document.createElement("td");
+      var edit = document.createElement("button");
+      edit.className = "btn ghost"; edit.type = "button"; edit.textContent = "Edit";
+      edit.addEventListener("click", function () { $("#month").value = m.month; loadMonthIntoGrid(m.month); window.scrollTo({ top: 0, behavior: "smooth" }); });
+      var del = document.createElement("button");
+      del.className = "btn ghost"; del.type = "button"; del.textContent = "Delete";
+      del.style.marginLeft = "6px";
+      del.addEventListener("click", function () {
+        if (!confirm("Delete the figures for " + monthLabel(m.month) + "? This cannot be undone.")) return;
+        api("/api/admin/complaints/" + m.month, { method: "DELETE" }).then(function (d) {
+          data = d; renderMonths(); say($("#c-msg"), "Deleted " + monthLabel(m.month) + ".", "ok");
+        }).catch(function (e) { say($("#c-msg"), e.message, "bad"); });
+      });
+      actions.appendChild(edit); actions.appendChild(del);
+      tr.appendChild(actions);
+      body.appendChild(tr);
+    });
+  }
+  function saveMonth() {
+    var ym = $("#month").value;
+    if (!/^\d{4}-(0[1-9]|1[0-2])$/.test(ym)) return say($("#c-msg"), "Pick a month first.", "bad");
+    var payload = { month: ym, impersonation: Number($("#imp").value || 0), rows: {} };
+    SOURCES.forEach(function (src) {
+      payload.rows[src[0]] = {};
+      FIELDS.forEach(function (f) { payload.rows[src[0]][f] = Number($("#f-" + src[0] + "-" + f).value || 0); });
+    });
+    api("/api/admin/complaints", { method: "PUT", body: JSON.stringify(payload) })
+      .then(function (d) { data = d; renderMonths(); say($("#c-msg"), "Saved " + monthLabel(ym) + ". The website will show it immediately.", "ok"); })
+      .catch(function (e) { say($("#c-msg"), e.message, "bad"); });
+  }
+
+  /* ---------------- enquiries ---------------- */
+  function renderEnquiries(list) {
+    var body = $("#enquiries");
+    body.textContent = "";
+    if (!list.length) {
+      var tr = document.createElement("tr"), td = document.createElement("td");
+      td.colSpan = 8; td.textContent = "No enquiries yet.";
+      tr.appendChild(td); body.appendChild(tr); return;
+    }
+    list.forEach(function (e) {
+      var tr = document.createElement("tr");
+      function td(node) { var c = document.createElement("td"); if (typeof node === "string") c.textContent = node; else c.appendChild(node); tr.appendChild(c); return c; }
+      td(new Date(e.created_at).toLocaleString("en-IN", { dateStyle: "medium", timeStyle: "short" }));
+      td(e.name + (e.city ? " · " + e.city : "") + (e.residency === "nri" ? " · NRI" : ""));
+      var contact = document.createElement("div");
+      var mail = document.createElement("a"); mail.href = "mailto:" + e.email; mail.textContent = e.email;
+      var tel = document.createElement("a"); tel.href = "tel:" + e.phone; tel.textContent = e.phone;
+      contact.appendChild(mail); contact.appendChild(document.createElement("br")); contact.appendChild(tel);
+      td(contact);
+      td(e.service || "-");
+      var msg = document.createElement("div"); msg.style.maxWidth = "320px"; msg.style.whiteSpace = "pre-wrap";
+      msg.textContent = e.message || "-";
+      td(msg);
+      var sel = document.createElement("select");
+      ["new", "replied", "closed"].forEach(function (s) {
+        var o = document.createElement("option"); o.value = s; o.textContent = s;
+        if (e.status === s) o.selected = true; sel.appendChild(o);
+      });
+      sel.setAttribute("aria-label", "Status for enquiry " + e.id);
+      td(sel);
+      var notes = document.createElement("input");
+      notes.value = e.notes || ""; notes.placeholder = "notes";
+      notes.setAttribute("aria-label", "Notes for enquiry " + e.id);
+      td(notes);
+      var save = document.createElement("button");
+      save.className = "btn ghost"; save.type = "button"; save.textContent = "Save";
+      save.addEventListener("click", function () {
+        api("/api/admin/enquiries/" + e.id, { method: "PATCH", body: JSON.stringify({ status: sel.value, notes: notes.value }) })
+          .then(function () { say($("#e-msg"), "Updated enquiry #" + e.id + ".", "ok"); })
+          .catch(function (err) { say($("#e-msg"), err.message, "bad"); });
+      });
+      td(save);
+      body.appendChild(tr);
+    });
+  }
+  function loadEnquiries() {
+    api("/api/admin/enquiries?status=" + encodeURIComponent($("#filter").value))
+      .then(function (d) { renderEnquiries(d.enquiries || []); })
+      .catch(function (e) { say($("#e-msg"), e.message, "bad"); });
+  }
+
+  /* ---------------- site details ---------------- */
+  var SITE_KEYS = ["basl_no", "upi_id", "audit_status", "audit_findings", "fee_ongoing", "last_updated", "ra_status", "ra_reg_no", "raasb_no"];
+  function fillSite() { SITE_KEYS.forEach(function (k) { var el = $("#s-" + k); if (el) el.value = site[k] || ""; }); }
+  function saveSite() {
+    var payload = {};
+    SITE_KEYS.forEach(function (k) { var el = $("#s-" + k); if (el) payload[k] = el.value.trim(); });
+    api("/api/admin/site", { method: "PUT", body: JSON.stringify(payload) })
+      .then(function (d) { site = d; say($("#s-msg"), "Saved.", "ok"); })
+      .catch(function (e) { say($("#s-msg"), e.message, "bad"); });
+  }
+
+  /* ---------------- boot ---------------- */
+  function showApp() {
+    $("#login-view").classList.add("hidden");
+    $("#app").classList.remove("hidden");
+    $("#logout").classList.remove("hidden");
+    buildGrid();
+    var now = new Date();
+    var prev = new Date(now.getFullYear(), now.getMonth() - 1, 1);
+    $("#month").value = prev.getFullYear() + "-" + String(prev.getMonth() + 1).padStart(2, "0");
+    api("/api/admin/complaints").then(function (d) {
+      data = d; renderMonths(); loadMonthIntoGrid($("#month").value);
+    });
+    api("/api/site").then(function (d) { site = d; fillSite(); });
+    loadEnquiries();
+  }
+
+  $("#login-form").addEventListener("submit", function (ev) {
+    ev.preventDefault();
+    api("/api/admin/login", { method: "POST", body: JSON.stringify({ password: $("#pw").value }) })
+      .then(showApp)
+      .catch(function (e) { say($("#login-msg"), e.message, "bad"); });
+  });
+  $("#logout").addEventListener("click", function () {
+    api("/api/admin/logout", { method: "POST" }).then(function () { location.reload(); });
+  });
+  $$(".tab").forEach(function (tab) {
+    tab.addEventListener("click", function () {
+      $$(".tab").forEach(function (t) { t.setAttribute("aria-selected", String(t === tab)); });
+      $$(".view").forEach(function (v) { v.classList.add("hidden"); });
+      $("#view-" + tab.dataset.view).classList.remove("hidden");
+      if (tab.dataset.view === "enquiries") loadEnquiries();
+    });
+  });
+  $("#month").addEventListener("change", function () { loadMonthIntoGrid($("#month").value); });
+  $("#save-month").addEventListener("click", saveMonth);
+  $("#save-site").addEventListener("click", saveSite);
+  $("#filter").addEventListener("change", loadEnquiries);
+  $("#dl-csv").addEventListener("click", function () { window.location.href = "/api/admin/enquiries.csv"; });
+  $("#dl-complaints").addEventListener("click", function () {
+    var out = {
+      updated_at: new Date().toISOString().slice(0, 10),
+      note: "Exported from the MyFinancial admin panel. Commit this to data/complaints.json.",
+      months: data.months
+    };
+    download("complaints.json", JSON.stringify(out, null, 2));
+  });
+  $("#dl-site").addEventListener("click", function () { download("site.json", JSON.stringify(site, null, 2)); });
+  $("#test-notify").addEventListener("click", function () {
+    say($("#e-msg"), "Sending…");
+    api("/api/admin/test-notify", { method: "POST" })
+      .then(function (r) { say($("#e-msg"), "Notification result: " + JSON.stringify(r), "ok"); })
+      .catch(function (e) { say($("#e-msg"), e.message, "bad"); });
+  });
+
+  api("/api/admin/session").then(function (s) {
+    if (s.default_password) $("#default-pw").classList.remove("hidden");
+    if (s.authenticated) showApp();
+  });
+})();
+</script>
+</body>
+</html>

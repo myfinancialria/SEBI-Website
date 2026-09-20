@@ -1,0 +1,15 @@
+{
+  "updated_at": "2026-09-20",
+  "note": "Maintained from the admin panel. On a static host, download the refreshed file from the admin panel and commit it here by the 7th of every month.",
+  "months": [
+    {
+      "month": "2026-09",
+      "impersonation": 0,
+      "rows": {
+        "direct": { "pending_last": 0, "received": 0, "resolved": 0, "pending_total": 0, "pending_gt3m": 0, "avg_days": 0 },
+        "scores": { "pending_last": 0, "received": 0, "resolved": 0, "pending_total": 0, "pending_gt3m": 0, "avg_days": 0 },
+        "other":  { "pending_last": 0, "received": 0, "resolved": 0, "pending_total": 0, "pending_gt3m": 0, "avg_days": 0 }
+      }
+    }
+  ]
+}

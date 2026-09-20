@@ -1,0 +1,12 @@
+{
+  "name": "myfinancial-admin",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Enquiry database and monthly complaint-data admin for the MyFinancial site. No dependencies.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": { "node": ">=22.5.0" }
+}

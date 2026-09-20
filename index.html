@@ -1,0 +1,1573 @@
+<!doctype html>
+<html lang="en-IN" data-ra-status="pending">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>MyFinancial — SEBI Registered Investment Adviser (INA000023162)</title>
+<meta name="description" content="MyFinancial is the fee-only investment advisory practice of Nithin P, registered with SEBI as an Investment Adviser (INA000023162). Written advice on securities, no distribution, no commissions." />
+<meta name="robots" content="index, follow" />
+<meta name="theme-color" content="#fbfbfa" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#08080a" media="(prefers-color-scheme: dark)" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%2314141a'/><text x='50' y='71' font-size='58' text-anchor='middle' fill='%23fff' font-family='Georgia'>m</text></svg>" />
+<style>
+/* ==========================================================================
+   MyFinancial — single-page site. Tokens mirror the myfinancial app theme.
+   Contrast pairs verified against WCAG 2.1 AA (>= 4.5:1 text, >= 3:1 focus).
+   ========================================================================== */
+:root {
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  --font-serif: Georgia, "Times New Roman", serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  --ink:       #14141a;
+  --ink-dim:   #55555f;
+  --ink-faint: #6b6b76;   /* darkened from the app's #8b8b96 to clear 4.5:1 */
+  --paper:     #fbfbfa;
+  --paper-2:   #ffffff;
+  --paper-3:   #f2f2f0;
+  --line:      #e5e5e2;
+  --line-2:    #d2d2ce;
+  --accent:    #3355e8;
+  --warn:      #8a5a0d;   /* darkened from the app's #b4761c to clear 4.5:1 on paper */
+
+  --wrap: 1120px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ink: #f2f2f4; --ink-dim: #9a9aa4; --ink-faint: #8f8f9a;
+    --paper: #08080a; --paper-2: #0e0e11; --paper-3: #16161a;
+    --line: #1e1e24; --line-2: #2b2b33; --accent: #6f8cff; --warn: #e8a33d;
+  }
+}
+:root[data-theme="dark"] {
+  --ink: #f2f2f4; --ink-dim: #9a9aa4; --ink-faint: #8f8f9a;
+  --paper: #08080a; --paper-2: #0e0e11; --paper-3: #16161a;
+  --line: #1e1e24; --line-2: #2b2b33; --accent: #6f8cff; --warn: #e8a33d;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; }
+}
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.62;
+  -webkit-font-smoothing: antialiased;
+}
+.wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 20px; }
+@media (min-width: 720px) { .wrap { padding: 0 32px; } }
+
+a { color: inherit; text-underline-offset: .18em; }
+a:hover { color: var(--accent); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 1px; }
+
+.skip {
+  position: absolute; left: -9999px; top: 0; z-index: 100;
+  background: var(--ink); color: var(--paper); padding: 12px 18px;
+  font-family: var(--font-mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase;
+}
+.skip:focus { left: 0; }
+
+/* ---------- type ---------- */
+.eyebrow {
+  font-family: var(--font-mono); font-size: 11px; line-height: 1.5;
+  text-transform: uppercase; letter-spacing: .16em; color: var(--ink-faint);
+}
+h1 {
+  margin: 13px 0 0; font-size: clamp(2.05rem, 5.2vw, 3.2rem); font-weight: 800;
+  line-height: 1.02; letter-spacing: -.04em; max-width: 18ch;
+}
+h1 .alt { font-family: var(--font-serif); font-weight: 400; font-style: italic; letter-spacing: -.02em; color: var(--ink-dim); }
+h2 { margin: 12px 0 0; font-size: clamp(1.4rem, 2.8vw, 1.95rem); font-weight: 700; letter-spacing: -.03em; line-height: 1.15; }
+h3 { margin: 0; font-size: 16px; font-weight: 700; letter-spacing: -.015em; }
+h4 { margin: 0 0 6px; font-size: 14px; font-weight: 700; letter-spacing: -.01em; }
+p { margin: 12px 0 0; }
+.lede { margin-top: 16px; max-width: 64ch; font-size: 16px; color: var(--ink-dim); }
+.muted { color: var(--ink-dim); }
+.small { font-size: 13px; }
+.note { font-size: 13px; color: var(--ink-dim); max-width: 78ch; }
+strong { font-weight: 650; }
+
+/* ---------- layout ---------- */
+section { border-top: 1px solid var(--line); }
+.sec-pad { padding: 52px 0 56px; }
+@media (min-width: 720px) { .sec-pad { padding: 68px 0 72px; } }
+.sec-head { max-width: 72ch; }
+.sec-head p { color: var(--ink-dim); }
+
+/* hairline grid, as used across the myfinancial app */
+.grid { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 28px; }
+.grid > * { background: var(--paper-2); padding: 20px; min-width: 0; }
+@media (min-width: 640px) { .g2 { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 900px) { .g3 { grid-template-columns: repeat(3, 1fr); } .g4 { grid-template-columns: repeat(4, 1fr); } }
+@media (min-width: 640px) and (max-width: 899px) { .g3, .g4 { grid-template-columns: 1fr 1fr; } }
+
+.kicker { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: .14em; color: var(--ink-faint); margin-bottom: 10px; }
+.card p { font-size: 14px; color: var(--ink-dim); }
+.card ul { margin: 10px 0 0; padding-left: 17px; font-size: 13.5px; color: var(--ink-dim); }
+.card li { margin-top: 4px; }
+
+/* ---------- buttons ---------- */
+.btns { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+.btn {
+  display: inline-block; padding: 13px 22px; text-decoration: none;
+  font-family: var(--font-mono); font-size: 11.5px; text-transform: uppercase; letter-spacing: .12em;
+  border: 1px solid var(--ink); background: var(--ink); color: var(--paper);
+  transition: opacity .15s ease;
+}
+.btn:hover { opacity: .85; color: var(--paper); }
+.btn-ghost { background: transparent; color: var(--ink); border-color: var(--ink-dim); }
+.btn-ghost:hover { color: var(--ink); border-color: var(--ink); }
+
+/* ---------- header ---------- */
+.site-header { position: sticky; top: 0; z-index: 50; background: var(--paper); border-bottom: 1px solid var(--line); }
+.hrow { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 22px; padding: 11px 0; }
+.logo { font-family: var(--font-serif); font-style: italic; font-size: 19px; letter-spacing: -.02em; text-decoration: none; flex-shrink: 0; }
+.logo b { font-family: var(--font-sans); font-style: normal; font-weight: 800; letter-spacing: -.04em; }
+.site-nav ul { display: flex; flex-wrap: wrap; gap: 2px 4px; list-style: none; margin: 0; padding: 0; }
+.site-nav a { display: block; padding: 6px 8px; text-decoration: none; font-family: var(--font-mono); font-size: 11.5px; text-transform: uppercase; letter-spacing: .1em; color: var(--ink-faint); white-space: nowrap; }
+.site-nav a:hover { color: var(--ink); }
+.hspacer { display: none; }
+#theme-toggle { margin-left: auto; }
+@media (max-width: 1023px) { .site-nav { flex-basis: 100%; order: 3; } }
+#theme-toggle { background: transparent; border: 1px solid var(--ink-dim); color: var(--ink-dim); font-family: var(--font-mono); font-size: 11.5px; text-transform: uppercase; letter-spacing: .1em; padding: 6px 10px; cursor: pointer; }
+#theme-toggle:hover { color: var(--ink); border-color: var(--ink-dim); }
+
+/* ---------- regulatory band (complaint data, kept in the first viewport) ---------- */
+.band { background: var(--paper-3); border-bottom: 1px solid var(--line); }
+.band-inner { padding: 11px 0 13px; }
+.band-top { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; }
+.band-top h2 { font-size: 13.5px; font-weight: 700; letter-spacing: .01em; margin: 0; }
+#complaint-status .eyebrow, #complaints .eyebrow { font-size: 12px; }
+.band-month { font-family: var(--font-mono); font-size: 12.5px; text-transform: uppercase; letter-spacing: .1em; color: var(--ink-dim); }
+.band-note { font-size: 12.5px; color: var(--ink-dim); margin: 7px 0 0; max-width: 104ch; }
+
+/* ---------- tables (SEBI-prescribed formats: min 12px text) ---------- */
+.tscroll { overflow-x: auto; margin-top: 10px; border: 1px solid var(--line); background: var(--paper-2); }
+.tscroll:focus-visible { outline: 2px solid var(--accent); outline-offset: 0; }
+table.reg { width: 100%; border-collapse: collapse; font-size: 12.5px; min-width: 620px; }
+table.reg caption { text-align: left; font-family: var(--font-mono); font-size: 12px; text-transform: uppercase; letter-spacing: .1em; color: var(--ink-dim); padding: 10px 12px 9px; }
+table.reg th, table.reg td { border-top: 1px solid var(--line); padding: 7px 12px; text-align: left; vertical-align: top; }
+table.reg thead th { font-size: 12px; font-weight: 700; color: var(--ink); background: var(--paper-3); }
+table.reg tbody th { font-weight: 500; color: var(--ink); }
+table.reg td { font-variant-numeric: tabular-nums; color: var(--ink-dim); }
+table.reg tr.total th, table.reg tr.total td { font-weight: 700; color: var(--ink); background: var(--paper-3); }
+.tfoot { font-size: 12.5px; color: var(--ink-dim); margin: 8px 0 0; line-height: 1.5; }
+
+/* definition rows */
+.dl { margin: 24px 0 0; display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.dl > div { background: var(--paper-2); padding: 14px 18px; display: grid; gap: 2px; min-width: 0; }
+@media (min-width: 640px) { .dl > div { grid-template-columns: 240px 1fr; gap: 18px; align-items: baseline; } }
+.dl dt { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: .12em; color: var(--ink-faint); }
+.dl dd { margin: 0; font-size: 14.5px; }
+
+/* numbered list / steps */
+.steps { counter-reset: s; list-style: none; margin: 26px 0 0; padding: 0; display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.steps li { counter-increment: s; background: var(--paper-2); padding: 18px 20px; min-width: 0; }
+@media (min-width: 900px) { .steps { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 640px) and (max-width: 899px) { .steps { grid-template-columns: 1fr 1fr; } }
+.steps li::before { content: counter(s, decimal-leading-zero); display: block; font-family: var(--font-mono); font-size: 11px; letter-spacing: .14em; color: var(--ink-faint); margin-bottom: 8px; }
+.steps h3 { font-size: 15px; }
+.steps p { font-size: 13.5px; color: var(--ink-dim); margin-top: 6px; }
+
+/* ordered/unordered prose lists */
+.plist { margin: 16px 0 0; padding-left: 20px; font-size: 14px; color: var(--ink-dim); max-width: 88ch; }
+.plist li { margin-top: 7px; }
+.plist.tight li { margin-top: 4px; }
+
+/* quoted statutory text */
+.stat {
+  margin: 22px 0 0; padding: 18px 20px; background: var(--paper-2);
+  border: 1px solid var(--line); border-left: 3px solid var(--ink-dim);
+  font-size: 14px;
+}
+.stat p:first-child { margin-top: 0; }
+.cite { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: .1em; color: var(--ink-faint); margin-top: 14px; display: block; }
+
+/* warning strip — SEBI standard warning, kept well above 10pt */
+.warning {
+  border: 1px solid var(--line-2); background: var(--paper-2);
+  padding: 14px 18px; font-size: 13.5px; margin-top: 26px;
+}
+.warning .lbl { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: .14em; color: var(--warn); display: block; margin-bottom: 6px; }
+
+/* editable placeholders — replace before publishing */
+.fill { border-bottom: 1px dotted var(--warn); color: var(--warn); font-family: var(--font-mono); }
+
+/* footer */
+.site-footer { border-top: 1px solid var(--line); background: var(--paper-3); }
+.foot-pad { padding: 44px 0 52px; }
+.foot-links { display: flex; flex-wrap: wrap; gap: 8px 20px; list-style: none; margin: 0 0 26px; padding: 0; font-size: 13px; }
+.foot-grid { display: grid; gap: 26px; }
+@media (min-width: 760px) { .foot-grid { grid-template-columns: 1.15fr 1fr; gap: 40px; } }
+.foot-grid h2 { font-size: 13px; font-weight: 700; letter-spacing: 0; }
+.foot-list { list-style: none; margin: 12px 0 0; padding: 0; font-size: 13.5px; }
+.foot-list li { margin-top: 5px; color: var(--ink-dim); }
+.foot-list b { color: var(--ink); font-weight: 600; }
+.legal { margin-top: 34px; padding-top: 24px; border-top: 1px solid var(--line-2); font-size: 13px; color: var(--ink-dim); max-width: 92ch; }
+.legal p + p { margin-top: 12px; }
+
+/* RA blocks stay in the source and are switched on with one attribute on <html> */
+/* Research Analyst blocks live in the source at all times. They appear the moment
+   data-ra-status on <html> is switched from "pending" to "active" — no JS involved.
+   The :not() selector keeps specificity above .site-nav a and friends. */
+html:not([data-ra-status="active"]) [data-ra] { display: none; }
+html[data-ra-status="active"] [data-ria-only] { display: none; }
+
+/* ---------- compact hero so the complaint band stays in the first screen ---------- */
+.hero-pad { padding: 34px 0 30px; }
+@media (min-width: 720px) { .hero-pad { padding: 44px 0 34px; } }
+
+/* ---------- one-line complaint status, kept in the first screen ---------- */
+.statusbar { background: var(--paper-3); border-bottom: 1px solid var(--line); }
+.statusbar-inner {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 3px 12px;
+  padding: 9px 20px; font-size: 12px; line-height: 1.5;
+}
+@media (min-width: 720px) { .statusbar-inner { padding-left: 32px; padding-right: 32px; } }
+.sb-label { font-family: var(--font-mono); font-size: 12px; text-transform: uppercase; letter-spacing: .12em; color: var(--ink); }
+.sb-month { font-family: var(--font-mono); font-size: 12px; text-transform: uppercase; letter-spacing: .1em; color: var(--ink-dim); }
+.sb-figs { display: flex; flex-wrap: wrap; gap: 3px 12px; color: var(--ink-dim); }
+.sb-figs b { color: var(--ink); font-variant-numeric: tabular-nums; font-weight: 650; }
+.sb-link { margin-left: auto; font-size: 12px; color: var(--ink-dim); white-space: nowrap; }
+.sb-link:hover { color: var(--ink); }
+.status-block { margin-top: 26px; padding: 18px 20px 20px; border: 1px solid var(--line); background: var(--paper-2); }
+.status-block .band-top { margin-bottom: 2px; }
+
+/* ---------- accordions (Investor Charter, MITC, "all months") ---------- */
+details.acc { border: 1px solid var(--line); background: var(--paper-2); }
+details.acc + details.acc { border-top: 0; }
+details.acc > summary {
+  cursor: pointer; list-style: none; padding: 13px 18px 13px 40px; position: relative;
+  font-size: 14.5px; font-weight: 650; letter-spacing: -.01em;
+}
+details.acc > summary::-webkit-details-marker { display: none; }
+details.acc > summary::before {
+  content: ""; position: absolute; left: 18px; top: 50%; width: 8px; height: 8px;
+  border-right: 1.5px solid var(--ink-dim); border-bottom: 1.5px solid var(--ink-dim);
+  transform: translateY(-70%) rotate(45deg); transition: transform .15s ease;
+}
+details.acc[open] > summary::before { transform: translateY(-30%) rotate(225deg); }
+details.acc > summary:hover { background: var(--paper-3); }
+details.acc > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+details.acc .hint { font-family: var(--font-mono); font-size: 11px; font-weight: 400; text-transform: uppercase; letter-spacing: .1em; color: var(--ink-faint); margin-left: 6px; white-space: nowrap; }
+.acc-body { padding: 2px 18px 18px 40px; font-size: 14px; }
+.acc-body > *:first-child { margin-top: 0; }
+.acc-body h3.sub { font-size: 14px; margin: 18px 0 0; }
+.acc-body h3.sub:first-child { margin-top: 0; }
+.acc-body-top { padding: 14px 18px 18px; }
+.acc-top { margin-top: 24px; border-left: 3px solid var(--ink-dim); }
+.acc-top > summary { font-size: 15.5px; padding-left: 38px; }
+.acc-top > summary::before { left: 16px; }
+details.more { margin-top: 18px; border: 1px solid var(--line); background: var(--paper-2); }
+details.more > summary {
+  cursor: pointer; padding: 12px 18px; font-family: var(--font-mono); font-size: 12px;
+  text-transform: uppercase; letter-spacing: .1em; color: var(--ink-dim);
+}
+details.more > summary:hover { color: var(--ink); background: var(--paper-3); }
+details.more > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+details.more .tscroll { border: 0; border-top: 1px solid var(--line); }
+
+/* ---------- pricing ---------- */
+.card.price .price-tag { font-size: 30px; font-weight: 800; letter-spacing: -.035em; color: var(--ink); margin-top: 14px; font-variant-numeric: tabular-nums; }
+.card.price .price-tag span { font-family: var(--font-mono); font-size: 11px; font-weight: 400; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-faint); margin-left: 6px; }
+.card.price .price-sub { font-size: 12.5px; color: var(--ink-faint); margin-top: 2px; }
+.card.price ul { margin-top: 16px; }
+
+/* ---------- enquiry form ---------- */
+.form { margin-top: 28px; }
+.form-grid { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); }
+@media (min-width: 720px) { .form-grid { grid-template-columns: 1fr 1fr; } .field-wide { grid-column: 1 / -1; } }
+.field { margin: 0; background: var(--paper-2); padding: 12px 16px 14px; min-width: 0; }
+.field label { display: block; font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: .12em; color: var(--ink-faint); margin-bottom: 6px; }
+.field .req { color: var(--warn); }
+.field input, .field select, .field textarea {
+  width: 100%; background: transparent; color: var(--ink); font-family: var(--font-sans); font-size: 15px;
+  border: 0; border-bottom: 1px solid var(--line-2); padding: 5px 0; border-radius: 0;
+}
+.field textarea { resize: vertical; line-height: 1.55; }
+.field select { appearance: none; padding-right: 18px; background-image: linear-gradient(45deg, transparent 50%, var(--ink-dim) 50%), linear-gradient(135deg, var(--ink-dim) 50%, transparent 50%); background-position: right 6px top 60%, right 1px top 60%; background-size: 5px 5px, 5px 5px; background-repeat: no-repeat; }
+.field input:focus, .field select:focus, .field textarea:focus { outline: 0; border-bottom-color: var(--accent); box-shadow: 0 1px 0 0 var(--accent); }
+.field input:focus-visible, .field select:focus-visible, .field textarea:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.field.invalid input, .field.invalid select, .field.invalid textarea { border-bottom-color: var(--down); box-shadow: 0 1px 0 0 var(--down); }
+.field .err { display: block; margin-top: 6px; font-size: 12.5px; color: var(--down); }
+.consent { display: flex; gap: 10px; align-items: flex-start; margin-top: 18px; font-size: 13.5px; color: var(--ink-dim); max-width: 78ch; }
+.consent input { margin-top: 3px; width: 16px; height: 16px; accent-color: var(--accent); flex: 0 0 auto; }
+.consent label { cursor: pointer; }
+button.btn { cursor: pointer; font: inherit; font-family: var(--font-mono); font-size: 11.5px; text-transform: uppercase; letter-spacing: .12em; }
+button.btn[disabled] { opacity: .55; cursor: progress; }
+.form-status { margin-top: 16px; font-size: 14px; min-height: 1.2em; }
+.form-status.ok { color: var(--up); }
+.form-status.bad { color: var(--down); }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+@media print {
+  .site-header, #theme-toggle, .btns, .skip, .form, details.more > summary, .statusbar { display: none !important; }
+  details.acc > summary::before { display: none; }
+  details[open] .acc-body, details .acc-body { display: block !important; }
+  body { font-size: 11pt; background: #fff; color: #000; }
+  .tscroll { overflow: visible; }
+  section { page-break-inside: avoid; }
+  a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 9pt; }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+
+<header class="site-header" id="top">
+  <div class="wrap hrow">
+    <a class="logo" href="#top">my<b>financial</b></a>
+    <nav class="site-nav" aria-label="Primary">
+      <ul>
+        <li><a href="#who">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li data-ra><a href="#research">Research</a></li>
+        <li><a href="#fees">Fees</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#enquiry">Enquiry</a></li>
+        <li><a href="#registration">Registration</a></li>
+        <li><a href="#disclosures">Disclosures</a></li>
+        <li><a href="#terms">MITC</a></li>
+        <li><a href="#charter">Charter</a></li>
+        <li><a href="#grievance">Grievances</a></li>
+        <li><a href="#complaints">Complaints</a></li>
+      </ul>
+    </nav>
+    <div class="hspacer"></div>
+    <button id="theme-toggle" type="button" hidden>Dark</button>
+  </div>
+</header>
+
+<!-- SEBI Master Circular for Investment Advisers, 06 Feb 2026, para 2.4 requires the complaint
+     figures on the homepage without scrolling, at font size 12 or above. The full Annexure C
+     table sits in the complaints section below; this line carries the same grand-total figures
+     so the requirement is met in the first screen. -->
+<div class="statusbar">
+  <div class="wrap statusbar-inner">
+    <span class="sb-label">Investor complaints</span>
+    <span class="sb-month" data-role="sb-month">September 2026</span>
+    <span class="sb-figs">
+      <span>Pending at start <b data-role="sb-0">0</b></span>
+      <span>Received <b data-role="sb-1">0</b></span>
+      <span>Resolved <b data-role="sb-2">0</b></span>
+      <span>Pending <b data-role="sb-3">0</b></span>
+      <span>Pending &gt; 3 months <b data-role="sb-4">0</b></span>
+      <span>Avg resolution <b data-role="sb-5">0</b> days</span>
+    </span>
+    <a class="sb-link" href="#complaint-status">Full table &rarr;</a>
+  </div>
+</div>
+
+<main id="main">
+
+
+
+<section id="about" aria-labelledby="about-h" style="border-top: 0;">
+  <div class="wrap hero-pad">
+    <p class="eyebrow">SEBI Registered Investment Adviser · INA000023162<span data-ra> · Research Analyst · <span class="fill" data-site="ra_reg_no">INH00000000</span></span></p>
+    <h1 id="about-h">Advice that is paid for, <span class="alt">never sold.</span></h1>
+    <p class="lede">MyFinancial is the investment advisory practice of <strong>Nithin P</strong>, registered with the Securities and Exchange Board of India as an Investment Adviser. We are paid by the people we advise and by nobody else — no commission, no brokerage, no distribution, no product on the side.</p>
+    <div class="btns">
+      <a class="btn" href="#enquiry">Start an enquiry →</a>
+      <a class="btn btn-ghost" href="#fees">See what it costs</a>
+    </div>
+  </div>
+</section>
+
+<section id="who" aria-labelledby="who-h">
+  <div class="wrap sec-pad">
+    <div class="sec-head">
+      <p class="eyebrow">Who we are</p>
+      <h2 id="who-h">The idea behind the practice</h2>
+      <p>Most financial advice in India arrives as a sales conversation, with the cost of the advice buried inside the product. A fund pays a trail, an insurer pays a commission, a platform is paid for the shelf space — and the person across the table earns more for one answer than for another. Good intentions do not fix that arrangement. Removing it does.</p>
+      <p>MyFinancial removes it. The practice is registered with SEBI as an Investment Adviser, is paid a stated fee by the client, and earns nothing else from the advice it gives. Every recommendation is written down — the arithmetic behind it, the costs, the risks, and why this option rather than that one — so a client can check the reasoning instead of trusting the adviser's word for it.</p>
+      <p>The work is deliberately quantitative. Cash flows, funding gaps, taxes and after-cost returns are computed rather than asserted; where a figure is uncertain the range is shown; and where the honest answer is that nothing needs to change, that is the advice you get.</p>
+    </div>
+
+    <div class="grid g3">
+      <article class="card">
+        <p class="kicker">01 — Fee-only</p>
+        <h3>The client pays. Nobody else does.</h3>
+        <p>No commission, trail, brokerage, referral fee or incentive from any manufacturer, platform or intermediary — ever. There is no distribution arm to feed, so there is nothing to sell you.</p>
+      </article>
+      <article class="card">
+        <p class="kicker">02 — In writing</p>
+        <h3>Reasoning you can audit</h3>
+        <p>Advice is issued in writing against a documented risk profile, with the rationale, costs, risks and suitability assessment recorded each time — and kept on record for inspection.</p>
+      </article>
+      <article class="card">
+        <p class="kicker">03 — You stay in control</p>
+        <h3>Your accounts, your hands</h3>
+        <p>Direct, non-commission plans wherever they exist. You hold your own funds and securities and place every transaction yourself. We never hold assets, never execute, never ask for a credential or an OTP.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="services" aria-labelledby="services-h">
+  <div class="wrap sec-pad">
+    <div class="sec-head">
+      <p class="eyebrow">What MyFinancial does</p>
+      <h2 id="services-h">Advisory services offered</h2>
+      <p>All services below are investment advisory services under the SEBI (Investment Advisers) Regulations, 2013. Advice is issued in writing, after risk profiling and a suitability assessment, and only after a signed advisory agreement is in place. Nothing here is a recommendation to any particular person.</p>
+    </div>
+
+    <div class="grid g3">
+      <article class="card">
+        <p class="kicker">01 — Financial plan</p>
+        <h3>Plan &amp; goal funding</h3>
+        <p>A written plan built on your cash flow, net worth and dated goals, with the funding maths made explicit — required monthly investment, assumed return band, and what happens if the assumption is missed.</p>
+        <ul>
+          <li>Cash-flow and net-worth statement</li>
+          <li>Goal-wise funding requirement</li>
+          <li>Emergency-fund and protection sizing</li>
+        </ul>
+      </article>
+      <article class="card">
+        <p class="kicker">02 — Portfolio</p>
+        <h3>Portfolio review &amp; asset allocation</h3>
+        <p>A line-by-line read of what you already hold: scheme overlap, cost, concentration, and the exit-load and tax consequence of any change — before a single switch is recommended.</p>
+        <ul>
+          <li>Holdings X-ray and overlap</li>
+          <li>Target allocation with rebalancing bands</li>
+          <li>Regular-to-direct migration path, with tax impact</li>
+        </ul>
+      </article>
+      <article class="card">
+        <p class="kicker">03 — Ongoing advice</p>
+        <h3>Continuing investment advice</h3>
+        <p>Periodic review and written advice on securities and mutual fund schemes held or proposed, with the rationale recorded each time. Direct (non-commission) plans are advised wherever they are available.</p>
+        <ul>
+          <li>Scheduled reviews and rebalancing advice</li>
+          <li>Written rationale for every recommendation</li>
+          <li>No execution: you place every transaction yourself</li>
+        </ul>
+      </article>
+      <article class="card">
+        <p class="kicker">04 — Tax</p>
+        <h3>Tax-aware planning</h3>
+        <p>Regime comparison, capital-gains and harvesting maths, and the timing of redemptions, framed around the investment advice. This is planning support, not a tax return and not a substitute for your chartered accountant.</p>
+        <ul>
+          <li>Old vs new regime comparison</li>
+          <li>Capital-gains and set-off planning</li>
+          <li>Coordination with your CA on filings</li>
+        </ul>
+      </article>
+      <article class="card">
+        <p class="kicker">05 — NRI</p>
+        <h3>NRI advisory</h3>
+        <p>Advice for non-resident clients on residency-linked taxation, account structure, repatriation limits and the securities they may and may not hold, within the scope of SEBI-regulated investment advice.</p>
+        <ul>
+          <li>Residency and DTAA-aware planning</li>
+          <li>NRE / NRO / FCNR account structure</li>
+          <li>Repatriation and reporting checklist</li>
+        </ul>
+      </article>
+      <article class="card">
+        <p class="kicker">06 — Estate</p>
+        <h3>Estate &amp; documentation hygiene</h3>
+        <p>Nomination and joint-holding audit across every account, a document vault checklist, and a briefing note your family can act on. Drafting and registration of a will is done by a lawyer, not by MyFinancial.</p>
+        <ul>
+          <li>Nomination audit across folios and accounts</li>
+          <li>Document and credential checklist</li>
+          <li>Succession briefing for the family</li>
+        </ul>
+      </article>
+    </div>
+
+    <div class="warning" role="note">
+      <span class="lbl">Scope of regulation</span>
+      Investment advice relating to securities falls under the purview of SEBI. Where a service touches products or matters that are not securities — insurance, bank deposits, real estate, income-tax filing, legal drafting or foreign assets — those products and MyFinancial's services in respect of them do not come under the regulatory purview of SEBI, and no recourse is available with SEBI for grievances relating to them. This is disclosed again in the advisory agreement and in the Most Important Terms and Conditions.
+    </div>
+
+  </div>
+</section>
+
+<section id="research" aria-labelledby="research-h" data-ra>
+  <div class="wrap sec-pad">
+    <div class="sec-head">
+      <p class="eyebrow">Research services</p>
+      <h2 id="research-h">Research offered as a SEBI Registered Research Analyst</h2>
+      <p>Research services are provided under the SEBI (Research Analysts) Regulations, 2014 under registration number <span class="fill" data-site="ra_reg_no">INH00000000</span>. Research is a separate service from investment advice: a research report is a view on a security, published to subscribers, and is not tailored to any individual subscriber's risk profile or circumstances.</p>
+    </div>
+    <div class="grid g3">
+      <article class="card">
+        <p class="kicker">R1 — Reports</p>
+        <h3>Company research reports</h3>
+        <p>Written research on listed Indian companies, stating the basis of the view, the assumptions behind it, the time horizon and the risks to the view.</p>
+      </article>
+      <article class="card">
+        <p class="kicker">R2 — Screens</p>
+        <h3>Rule-based research notes</h3>
+        <p>Periodic notes explaining the rules behind published screens and what changed in the underlying data, with every figure traceable to its source.</p>
+      </article>
+      <article class="card">
+        <p class="kicker">R3 — Model portfolio</p>
+        <h3>Model portfolio</h3>
+        <p>Where a model portfolio is published, it follows the guidelines at Annexure A of the SEBI Master Circular for Research Analysts, including disclosure of the rationale, the basis of selection and the performance record.</p>
+      </article>
+    </div>
+    <div class="warning" role="note">
+      <span class="lbl">Research disclosures</span>
+      Every research report carries the disclosures required by Regulation 19 of the RA Regulations — the analyst's and relatives' financial interest and holdings in the subject security, any actual or potential conflict of interest, compensation received, and whether the analyst has managed or co-managed a public offering of the subject company. Research recommendations do not provide any assurance of returns; there is no recourse to claim losses incurred on investments made on the basis of a research report.
+    </div>
+  </div>
+</section>
+
+<section id="fees" aria-labelledby="fees-h">
+  <div class="wrap sec-pad">
+    <div class="sec-head">
+      <p class="eyebrow">What it costs</p>
+      <h2 id="fees-h">Fees</h2>
+      <p>One stated fee, paid by you, agreed in writing before any work begins — and nothing else earned from your money.</p>
+    </div>
+
+    <div class="grid g2">
+      <article class="card price">
+        <p class="kicker">Resident individual</p>
+        <h3>Comprehensive financial plan</h3>
+        <p class="price-tag">₹19,999 <span>one-time</span></p>
+        <ul>
+          <li>A written financial plan built on your cash flow, net worth and dated goals, with the funding arithmetic shown</li>
+          <li>A review of your existing portfolio — schemes, stocks, overlap, cost, and the exit-load and tax consequence of any change</li>
+          <li>Target asset allocation with rebalancing bands</li>
+          <li>An implementation-ready action list that you execute in your own accounts</li>
+        </ul>
+      </article>
+      <article class="card price">
+        <p class="kicker">Non-resident (NRI)</p>
+        <h3>Comprehensive financial plan</h3>
+        <p class="price-tag">₹29,999 <span>one-time</span></p>
+        <ul>
+          <li>Everything in the resident plan — written plan, portfolio review, allocation and action list</li>
+          <li>Residency-linked taxation and the securities you may and may not hold as a non-resident</li>
+          <li>NRE / NRO / FCNR account structure, repatriation limits and the reporting checklist</li>
+          <li>DTAA-aware planning, coordinated with your tax adviser in either country</li>
+        </ul>
+      </article>
+    </div>
+    <p class="note" style="margin-top:18px;">Both are one-time engagements: you pay once, you receive the plan and the review, and you owe nothing further. Continuing advice is optional and separately agreed — <span class="fill" data-site="fee_ongoing" title="Fill in if and when you offer an ongoing service">ongoing advisory fee on request</span>.</p>
+
+    <dl class="dl" aria-label="Fee terms">
+      <div><dt>SEBI limit — fixed fee mode</dt><dd>₹1,51,000 per annum per family of client (individual and HUF clients). The fees above are well inside this limit.</dd></div>
+      <div><dt>SEBI limit — AUA mode</dt><dd>2.5% of Assets under Advice per annum per family of client (individual and HUF clients), if an AUA-based engagement is agreed.</dd></div>
+      <div><dt>Limits — what is excluded</dt><dd>The limits exclude statutory charges, apply only to advice on securities under SEBI's purview, and do not apply to non-individual clients or accredited investors.</dd></div>
+      <div><dt>Advance fees</dt><dd>Advance fees may be charged if you agree, for a maximum of one year. On premature termination by either side, the proportionate fee for the unexpired period is refunded, less a breakage fee that cannot exceed one quarter's fee.</dd></div>
+      <div data-ra><dt>Research service fees (RA)</dt><dd>Capped at ₹1,51,000 per annum per family of client for all research services, excluding statutory charges. Advance fees for research services cannot exceed one quarter.</dd></div>
+      <div><dt>Accepted payment modes</dt><dd>Account-payee crossed cheque or demand draft, or direct credit by NEFT, RTGS, IMPS or UPI. <strong>Cash is never accepted.</strong></dd></div>
+      <div><dt>Validated UPI ID</dt><dd><span class="fill" data-site="upi_id" title="Fill in the @valid UPI ID issued to you">nithinp.ia@valid____</span> — SEBI-registered intermediaries collect payments on UPI IDs carrying the exclusive <strong>@valid</strong> handle, shown with a thumbs-up-in-a-green-triangle icon. Verify the payee before paying using the <strong>SEBI Check</strong> facility on <a href="https://www.sebi.gov.in/" rel="noopener">sebi.gov.in</a>.</dd></div>
+      <div><dt>CeFCoM</dt><dd>You may optionally pay through the Centralised Fee Collection Mechanism for IAs and RAs, operated by BSE Limited.</dd></div>
+      <div><dt>What is never asked for</dt><dd>Funds or securities for investment, custody of your assets, your trading, demat or bank login credentials, or an OTP. MyFinancial will never ask for any of these.</dd></div>
+    </dl>
+
+    <p class="note" style="margin-top:18px;">No free trial is offered for any service, and part payment of fees is not accepted, in line with the SEBI Master Circular for Investment Advisers. Payment of a fee does not create any assurance of return or of profit.</p>
+  </div>
+</section>
+
+<section id="process" aria-labelledby="process-h">
+  <div class="wrap sec-pad">
+    <div class="sec-head">
+      <p class="eyebrow">How it works</p>
+      <h2 id="process-h">From enquiry to written advice</h2>
+      <p>The sequence below is fixed. No advice is given before the risk profile is complete and you have confirmed it.</p>
+    </div>
+    <ol class="steps">
+      <li><h3>Enquiry and scope</h3><p>A first conversation on what you need, what it will cost and what is out of scope. No advice is given at this stage and no part payment is taken.</p></li>
+      <li><h3>KYC and agreement</h3><p>KYC through a SEBI-registered KYC Registration Agency, followed by the investment advisory agreement and your consent to the Most Important Terms and Conditions.</p></li>
+      <li><h3>Risk profiling</h3><p>A documented risk profile based on your income, age, experience and capacity for loss. Your consent on the completed profile is recorded before anything is advised.</p></li>
+      <li><h3>Written advice</h3><p>Advice issued in writing against that profile, with the rationale, the costs, the risks and the suitability assessment recorded.</p></li>
+      <li><h3>Execution — by you</h3><p>You transact yourself, in your own accounts. MyFinancial does not execute trades, does not hold your funds or securities, and has no power of attorney.</p></li>
+      <li><h3>Review and records</h3><p>Periodic review, updated advice, and records of every interaction and recommendation retained for inspection and for the annual compliance audit.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section id="enquiry" aria-labelledby="enquiry-h">
+  <div class="wrap sec-pad">
+    <div class="sec-head">
+      <p class="eyebrow">Get in touch</p>
+      <h2 id="enquiry-h">Start an enquiry</h2>
+      <p>Tell us what you are trying to solve. You will get a reply from Nithin P setting out what the engagement would cover, what it costs and what falls outside it. An enquiry is not an engagement — no advice is given before KYC, a signed agreement and a completed risk profile.</p>
+    </div>
+
+    <form id="enquiry-form" class="form" method="post" action="">
+      <div class="form-grid">
+        <p class="field">
+          <label for="f-name">Your name <span class="req" aria-hidden="true">*</span></label>
+          <input id="f-name" name="name" type="text" required autocomplete="name" maxlength="120" />
+        </p>
+        <p class="field">
+          <label for="f-email">Email <span class="req" aria-hidden="true">*</span></label>
+          <input id="f-email" name="email" type="email" required autocomplete="email" maxlength="160" />
+        </p>
+        <p class="field">
+          <label for="f-phone">Phone <span class="req" aria-hidden="true">*</span></label>
+          <input id="f-phone" name="phone" type="tel" required autocomplete="tel" maxlength="24" inputmode="tel" />
+        </p>
+        <p class="field">
+          <label for="f-city">City</label>
+          <input id="f-city" name="city" type="text" autocomplete="address-level2" maxlength="80" />
+        </p>
+        <p class="field">
+          <label for="f-residency">Residency</label>
+          <select id="f-residency" name="residency">
+            <option value="resident">Resident Indian</option>
+            <option value="nri">Non-resident (NRI)</option>
+          </select>
+        </p>
+        <p class="field">
+          <label for="f-service">What you are looking for</label>
+          <select id="f-service" name="service">
+            <option value="plan-individual">Comprehensive financial plan — individual (₹19,999)</option>
+            <option value="plan-nri">Comprehensive financial plan — NRI (₹29,999)</option>
+            <option value="portfolio-review">Review of an existing portfolio</option>
+            <option value="other">Something else</option>
+          </select>
+        </p>
+        <p class="field field-wide">
+          <label for="f-message">What would you like help with?</label>
+          <textarea id="f-message" name="message" rows="4" maxlength="2000"></textarea>
+        </p>
+      </div>
+      <p class="hp" aria-hidden="true">
+        <label for="f-website">Website (leave this empty)</label>
+        <input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off" />
+      </p>
+      <p class="consent">
+        <input id="f-consent" name="consent" type="checkbox" required value="yes" />
+        <label for="f-consent">I agree that MyFinancial may store the details above and contact me about this enquiry. <span class="req" aria-hidden="true">*</span></label>
+      </p>
+      <p class="btns" style="margin-top:20px;">
+        <button class="btn" type="submit">Send enquiry →</button>
+      </p>
+      <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
+    </form>
+
+    <p class="note" style="margin-top:22px;">Your details are stored only to answer this enquiry and are never sold or shared for marketing. MyFinancial will never ask you for your trading, demat or bank login credentials, for an OTP, or for funds or securities to be transferred to it. You may ask for your enquiry record to be deleted at any time by writing to <a href="mailto:nithinp90@gmail.com">nithinp90@gmail.com</a>.</p>
+  </div>
+</section>
+
+<section id="registration" aria-labelledby="registration-h">
+  <div class="wrap sec-pad">
+    <div class="sec-head">
+      <p class="eyebrow">Registration</p>
+      <h2 id="registration-h">Registration and regulatory particulars</h2>
+      <p>Displayed as required by paragraph 1(xvii) of the SEBI Master Circular for Investment Advisers dated 06 February 2026.</p>
+    </div>
+    <dl class="dl" aria-label="Registration particulars">
+      <div><dt>Name as registered with SEBI</dt><dd>NITHIN P</dd></div>
+      <div><dt>Type of registration</dt><dd>Individual — Investment Adviser<span data-ra> and Research Analyst</span></dd></div>
+      <div><dt>SEBI registration number</dt><dd>INA000023162</dd></div>
+      <div data-ra><dt>SEBI registration number (RA)</dt><dd><span class="fill" data-site="ra_reg_no">INH00000000</span> · valid from <span class="fill">DD Mon YYYY</span> — Perpetual</dd></div>
+      <div><dt>Validity of registration</dt><dd>07 September 2026 — Perpetual</dd></div>
+      <div><dt>Enlistment with IAASB (BSE Limited)</dt><dd>Membership no. <span class="fill" data-site="basl_no" title="Fill in your BASL / IAASB enlistment number">BASL/IAASB no.</span></dd></div>
+      <div data-ra><dt>Enlistment with RAASB (BSE Limited)</dt><dd>Membership no. <span class="fill" data-site="raasb_no">RAASB no.</span></dd></div>
+      <div><dt>Registered address</dt><dd>Krishna H, Thathamangalam, Palakkad, Kerala — 678102, India</dd></div>
+      <div><dt>Telephone</dt><dd><a href="tel:+919544927559">+91 95449 27559</a></dd></div>
+      <div><dt>Email</dt><dd><a href="mailto:nithinp90@gmail.com">nithinp90@gmail.com</a></dd></div>
+      <div><dt>Principal Officer</dt><dd>Nithin P · <a href="tel:+919544927559">+91 95449 27559</a> · <a href="mailto:nithinp90@gmail.com">nithinp90@gmail.com</a></dd></div>
+      <div><dt>Compliance Officer</dt><dd>Nithin P · <a href="mailto:nithinp90@gmail.com">nithinp90@gmail.com</a></dd></div>
+      <div><dt>Corresponding SEBI office</dt><dd>Southern Regional Office, Securities and Exchange Board of India, 7th Floor, 756-L, Anna Salai, Chennai — 600002, Tamil Nadu · +91-44-28880222 / 28526686 · <a href="mailto:sebisro@sebi.gov.in">sebisro@sebi.gov.in</a></dd></div>
+    </dl>
+    <p class="note" style="margin-top:14px;">Registration can be verified on the SEBI list of registered Investment Advisers at <a href="https://www.sebi.gov.in/sebiweb/other/OtherAction.do?doRecognisedFpi=yes&amp;intmId=13" rel="noopener">sebi.gov.in</a>.<span data-ra> Research Analyst registration can be verified on the corresponding SEBI list of Research Analysts.</span></p>
+  </div>
+</section>
+
+<section id="disclosures" aria-labelledby="disclosures-h">
+  <div class="wrap sec-pad">
+    <div class="sec-head">
+      <p class="eyebrow">Mandatory disclosures</p>
+      <h2 id="disclosures-h">Disclosures</h2>
+      <p>Made under the SEBI (Investment Advisers) Regulations, 2013 and the SEBI Master Circular for Investment Advisers dated 06 February 2026.</p>
+    </div>
+
+    <div class="grid g2">
+      <article class="card">
+        <p class="kicker">Conflict of interest</p>
+        <h3>No distribution, no commission</h3>
+        <p>MyFinancial provides investment advice only. It does not distribute securities or mutual fund schemes and receives no commission, brokerage, trail, referral fee or incentive from any product manufacturer, platform or intermediary. Its only revenue is the fee paid by the client.</p>
+        <p>Direct (non-commission) plans are advised wherever they are available. Any conflict of interest that could affect the services rendered is disclosed to the client promptly and in writing.</p>
+      </article>
+      <article class="card">
+        <p class="kicker">Client-level segregation</p>
+        <h3>Advisory and distribution are not mixed</h3>
+        <p>As required by Regulation 22(5), a client who takes advisory services will not be provided distribution services by MyFinancial or by any person in its group or family, and the client's family members will not be provided distribution services either. An annual certificate confirming compliance with client-level segregation is obtained and forms part of the compliance audit.</p>
+      </article>
+      <article class="card">
+        <p class="kicker">Holdings and personal dealing</p>
+        <h3>Personal interest in advised securities</h3>
+        <p>The Investment Adviser and immediate relatives may hold securities or schemes that are also the subject of advice. Where that is the case, the holding and any actual or potential conflict is disclosed to the client at the time the advice is given. No advice is issued to benefit a personal position.</p>
+      </article>
+      <article class="card">
+        <p class="kicker">Artificial intelligence</p>
+        <h3>Extent of AI use</h3>
+        <p><span class="fill" title="Edit to describe your actual usage; the Investor Charter requires this disclosure">Software and AI tools are used for data processing, document drafting and the computation of published figures.</span> Every recommendation is reviewed, decided and issued by the Principal Officer. No advice is generated or sent autonomously, and client data is not used to train third-party models.</p>
+      </article>
+      <article class="card">
+        <p class="kicker">Annual compliance audit</p>
+        <h3>Status of the compliance audit report</h3>
+        <p>Compliance audit under Regulation 19(3) for the financial year ended 31 March 2026: <strong><span class="fill" data-site="audit_status" title="Update after each annual compliance audit">status to be updated</span></strong>. Adverse findings, if any, and the action taken on them are published here together with the status.</p>
+        <p>Adverse findings to date: <strong><span class="fill" data-site="audit_findings">nil / to be updated</span></strong>.</p>
+      </article>
+      <article class="card">
+        <p class="kicker">Advertisements</p>
+        <h3>Advertisement code</h3>
+        <p>All communications that may influence an investment decision — this website, posts, newsletters, videos and messages — follow the Advertisement Code for Investment Advisers. No performance claim, projection, testimonial, ranking, award reference or superlative is used, and copies of advertisements are retained for five years.</p>
+      </article>
+      <article class="card">
+        <p class="kicker">Assured returns</p>
+        <h3>No guarantees of any kind</h3>
+        <p>Assured, guaranteed or fixed-return schemes are prohibited by law and are never offered. MyFinancial does not guarantee returns, profits, accuracy or risk-free investment. All advice is subject to market risk.</p>
+      </article>
+      <article class="card">
+        <p class="kicker">Past performance</p>
+        <h3>No performance claims are published</h3>
+        <p>No return, risk or performance figure for any advice given by MyFinancial appears on this website or in any advertisement. Until risk and return metrics verified by the Past Risk and Return Verification Agency (PaRRVA) are available, SEBI permits past performance data to be given only to a client or a prospective client, one to one, on that person's specific request, certified by a member of ICAI or ICMAI, and carrying the disclaimer SEBI prescribes. It may not be put before the general public through any medium, including this site.</p>
+      </article>
+      <article class="card">
+        <p class="kicker">Client information</p>
+        <h3>Confidentiality and data</h3>
+        <p>Client information is used only to provide the advisory service and to meet legal and regulatory obligations, and is not sold or shared for marketing. Records of advice, interactions and KYC are retained for the periods SEBI prescribes and are available for inspection and audit.</p>
+      </article>
+    </div>
+
+    <div class="warning" role="note">
+      <span class="lbl">Standard warning</span>
+      Investment in securities market are subject to market risks. Read all the related documents carefully before investing.
+    </div>
+    <div class="warning" role="note" data-ria-only>
+      <span class="lbl">Disclaimer</span>
+      Registration granted by SEBI, enlistment with BSE and certification from NISM in no way guarantee performance of the IA or provide any assurance of returns to investors.
+    </div>
+    <div class="warning" role="note" data-ra>
+      <span class="lbl">Disclaimer</span>
+      Registration granted by SEBI, enlistment with BSE and certification from NISM in no way guarantee performance of the intermediary or provide any assurance of returns to investors.
+    </div>
+  </div>
+</section>
+
+<section id="terms" aria-labelledby="terms-h">
+  <div class="wrap sec-pad">
+    <div class="sec-head">
+      <p class="eyebrow">Most Important Terms and Conditions</p>
+      <h2 id="terms-h">MITC — Investment Advisory</h2>
+      <p>Standardised by the Industry Standards Forum in consultation with SEBI and IAASB, and forming part of the investment advisory agreement. Reproduced in full from Annexure B of the SEBI Master Circular for Investment Advisers — open the panel to read it.</p>
+    </div>
+    <details class="acc acc-top stat">
+    <summary>Most Important Terms and Conditions — Investment Advisory <span class="hint">15 clauses · Annexure B</span></summary>
+    <div class="acc-body acc-body-top">
+      <div class="acc-body"><ol class="plist">
+        <li>The Investment Adviser (IA) shall only accept payments towards its fees for Investment Advisory Services and is not permitted to accept funds or securities in its account on the client's behalf.</li>
+        <li>The IA does not guarantee returns, accuracy, or risk-free investments. All advice is subject to market risks, and there is no assurance of any returns or profits.</li>
+        <li>Any assured / guaranteed / fixed returns schemes or any other schemes of similar nature are prohibited by law. No scheme of this nature shall be offered to the client by the IA.</li>
+        <li>Investment advice, only related to securities shall fall under the purview of SEBI. In case of any services offered by IA related to products / services not under the purview of SEBI, IA shall make disclosure to the client and take appropriate declaration and undertaking from the client that such products / services and the services of IA in respect of such products / services do not come under regulatory purview of SEBI and that no recourse is available to the client with SEBI for grievances related to such products / services or services of IA in respect of such products / services.</li>
+        <li>This agreement is for the investment advisory services provided by the IA and IA cannot execute / carry out any trade (purchase / sell transaction) on behalf of the client without his / her / its specific and positive consent on every trade. Thus, the client is advised not to permit IA to execute any trade on his / her / its behalf without explicit consent.</li>
+        <li>The fee charged by IA to the client will be subject to the maximum of amount prescribed by SEBI / Investment Adviser Administration and Supervisory Body (IAASB) from time to time (applicable only for Individual and HUF Clients).
+          <ul class="plist tight">
+            <li>The current fee limit under Fixed Fee mode is ₹1,51,000 per annum per family of client. Under Assets under Advice (AUA) mode, maximum fee limit is 2.5 per cent of AUA per annum per family of client.</li>
+            <li>The IA may change the fee mode at any time with the client's consent; however, the maximum fee limit in such cases shall be higher of fee limit under the fixed fee mode or 2.5 per cent of AUA per annum per family of client.</li>
+            <li>The fee limits do not include statutory charges.</li>
+            <li>The fee limits apply only for investment advice related to securities under purview of SEBI.</li>
+            <li>The fee limits do not apply to a non-individual client / accredited investor.</li>
+          </ul>
+        </li>
+        <li>IA may charge fees in advance if agreed by the client. Such advance shall not exceed the period stipulated by SEBI; presently it is maximum one year. In case of premature termination of the IA services by the client or the IA, the client shall be entitled to seek refund of proportionate fees only for unexpired period. However, IA is entitled to retain a maximum breakage fee of not greater than one-quarter fee.</li>
+        <li>Fees to IA may be paid by the client through any of the specified modes like cheque, online bank transfer, UPI, etc. Cash payment is not allowed. Optionally the client can make payments through Centralized Fee Collection Mechanism (CeFCoM), managed by BSE Limited (i.e. currently recognized IAASB).</li>
+        <li>The IA is expected to know the client's financial details for providing services. Hence, the client is required to share the financial information (e.g. income, existing investments, liabilities, etc.) with the IA.</li>
+        <li>The IA is required to carry out the client's risk profiling and suitability analysis before providing services and thereafter on an ongoing basis. The services provided will be in line with the assessed risk profile. IA shall also communicate the assessed risk profile to the client.</li>
+        <li>As part of conflict of interest management, the client or the client's family members will not be provided any distribution services by IA or any of its group entity / family members. IA shall, wherever available, advice direct plans (non-commission based) of products only. The IA shall endeavor to promptly inform the client of any conflict of interest that may affect the services being rendered to the client.</li>
+        <li>For any grievances —
+          <ul class="plist tight">
+            <li><strong>Step 1:</strong> The client should first contact the IA using the details on its website or the contact details in the <a href="#grievance">grievance redressal and escalation matrix</a> below.</li>
+            <li><strong>Step 2:</strong> If the resolution provided by IA is unsatisfactory, the client can lodge grievances through SEBI's SCORES platform at <a href="https://scores.sebi.gov.in" rel="noopener">scores.sebi.gov.in</a>.</li>
+            <li><strong>Step 3:</strong> If the client remains dissatisfied with the outcome of the SCORES complaint, the client may consider the Online Dispute Resolution (ODR) through the Smart ODR portal at <a href="https://smartodr.in" rel="noopener">smartodr.in</a>.</li>
+          </ul>
+        </li>
+        <li>The SEBI registration, enlistment with IAASB, and NISM certification do not guarantee the performance of IA or assure returns to the client.</li>
+        <li>Clients are required to keep contact details, including email id and mobile number/s updated with the IA at all times.</li>
+        <li>The IA shall never ask for the client's login credentials and OTPs for the client's Trading Account, Demat Account and Bank Account. Never share such information with anyone including IA.</li>
+      </ol></div>
+      <span class="cite">Source — Annexure B, SEBI Master Circular for Investment Advisers, 06 February 2026 (MITC notified by Circular SEBI/HO/MIRSD/MIRSD-PoD/P/CIR/2025/19 dated 17 February 2025)</span>
+    </div>
+  </details>
+
+    <div data-ra>
+      <div class="sec-head" style="margin-top:52px;">
+        <p class="eyebrow">Most Important Terms and Conditions</p>
+        <h2>MITC — Research Services</h2>
+        <p>Standardised by the Industry Standards Forum in consultation with SEBI and RAASB, and disclosed to every research client before any service is rendered or any fee is charged.</p>
+      </div>
+      <details class="acc acc-top stat">
+    <summary>Most Important Terms and Conditions — Research Services <span class="hint">12 clauses · Annexure B ¶12</span></summary>
+    <div class="acc-body acc-body-top">
+      <div class="acc-body"><ol class="plist">
+          <li>These terms and conditions, and consent thereon are for the research services provided by the Research Analyst (RA) and RA cannot execute / carry out any trade (purchase / sell transaction) on behalf of, the client. Thus, the clients are advised not to permit RA to execute any trade on their behalf.</li>
+          <li>The fee charged by RA to the client will be subject to the maximum of amount prescribed by SEBI / Research Analyst Administration and Supervisory Body (RAASB) from time to time (applicable only for Individual and HUF Clients). The current fee limit is ₹1,51,000 per annum per family of client for all research services of the RA. The fee limit does not include statutory charges. The fee limits do not apply to a non-individual client / accredited investor.</li>
+          <li>RA may charge fees in advance if agreed by the client. Such advance shall not exceed the period stipulated by SEBI; presently it is one quarter. In case of premature termination of the RA services by either the client or the RA, the client shall be entitled to seek refund of proportionate fees only for unexpired period.</li>
+          <li>Fees to RA may be paid by the client through any of the specified modes like cheque, online bank transfer, UPI, etc. Cash payment is not allowed. Optionally the client can make payments through Centralized Fee Collection Mechanism (CeFCoM) managed by BSE Limited (i.e. currently recognized RAASB).</li>
+          <li>The RA is required to abide by the applicable regulations / circulars / directions specified by SEBI and RAASB from time to time in relation to disclosure and mitigation of any actual or potential conflict of interest. The RA will endeavor to promptly inform the client of any conflict of interest that may affect the services being rendered to the client.</li>
+          <li>Any assured / guaranteed / fixed returns schemes or any other schemes of similar nature are prohibited by law. No scheme of this nature shall be offered to the client by the RA.</li>
+          <li>The RA cannot guarantee returns, profits, accuracy, or risk-free investments from the use of the RA's research services. All opinions, projections, estimates of the RA are based on the analysis of available data under certain assumptions as of the date of preparation / publication of research report.</li>
+          <li>Any investment made based on recommendations in research reports are subject to market risks, and recommendations do not provide any assurance of returns. There is no recourse to claim any losses incurred on the investments made based on the recommendations in the research report. Any reliance placed on the research report provided by the RA shall be as per the client's own judgement and assessment of the conclusions contained in the research report.</li>
+          <li>The SEBI registration, Enlistment with RAASB, and NISM certification do not guarantee the performance of the RA or assure any returns to the client.</li>
+          <li>For any grievances — <strong>Step 1:</strong> contact the RA using the details on this website or in the <a href="#grievance">escalation matrix</a>. <strong>Step 2:</strong> if the resolution is unsatisfactory, lodge the grievance through SEBI's SCORES platform at <a href="https://scores.sebi.gov.in" rel="noopener">scores.sebi.gov.in</a>. <strong>Step 3:</strong> the client may also consider the Online Dispute Resolution (ODR) through the Smart ODR portal at <a href="https://smartodr.in" rel="noopener">smartodr.in</a>.</li>
+          <li>Clients are required to keep contact details, including email id and mobile number/s updated with the RA at all times.</li>
+          <li>The RA shall never ask for the client's login credentials and OTPs for the client's Trading Account, Demat Account and Bank Account. Never share such information with anyone including RA.</li>
+        </ol></div>
+      <span class="cite">Source — Annexure B (clause 12), SEBI Master Circular for Research Analysts, 06 February 2026</span>
+    </div>
+  </details>
+    </div>
+  </div>
+</section>
+
+<section id="charter" aria-labelledby="charter-h">
+  <div class="wrap sec-pad">
+    <div class="sec-head">
+      <p class="eyebrow">Investor Charter</p>
+      <h2 id="charter-h">Investor Charter in respect of Investment Advisers</h2>
+      <p>Published as required by the SEBI Master Circular for Investment Advisers, reproduced in full from Annexure F. Open the charter, then open any part of it — everything stays on this page.</p>
+    </div>
+
+    <details class="acc acc-top stat">
+    <summary>Investor Charter in respect of Investment Advisers <span class="hint">6 parts · Annexure F</span></summary>
+    <div class="acc-body acc-body-top">
+      <details class="acc"><summary>A. Vision and Mission Statements for investors</summary>
+        <div class="acc-body"><p><strong>Vision —</strong> Invest with knowledge &amp; safety.</p>
+      <p><strong>Mission —</strong> Every investor should be able to invest in right investment products based on their needs, manage and monitor them to meet their goals, access reports and enjoy financial wellness.</p></div>
+      </details>
+      <details class="acc"><summary>B. Details of business transacted by the Investment Adviser with respect to the investors</summary>
+        <div class="acc-body"><ul class="plist">
+        <li>To enter into an agreement with the client providing all details including fee details, aspects of conflict of interest disclosure and maintaining confidentiality of information.</li>
+        <li>To do a proper and unbiased risk-profiling and suitability assessment of the client.</li>
+        <li>To conduct audit annually.</li>
+        <li>To disclose the status of complaints on its website.</li>
+        <li>To disclose the name, proprietor name, type of registration, registration number, validity, complete address with telephone numbers and associated SEBI Office details (i.e. Head office / regional / local Office) on its website.</li>
+        <li>To employ only qualified and certified employees.</li>
+        <li>To deal with clients only from official number.</li>
+        <li>To maintain records of interactions, with all clients including prospective clients (prior to onboarding), where any conversation related to advice has taken place.</li>
+        <li>To ensure that all advertisements are in adherence to the provisions of the Advertisement Code for Investment Advisers.</li>
+        <li>Not to discriminate in terms of services provided, among clients opting for same / similar products / services offered by investment adviser.</li>
+      </ul></div>
+      </details>
+      <details class="acc"><summary>C. Details of services provided to investors (no indicative timelines)</summary>
+        <div class="acc-body"><ul class="plist">
+        <li><strong>Onboarding of clients —</strong> sharing of agreement copy; completing KYC of clients.</li>
+        <li><strong>Disclosure to clients —</strong> to provide full disclosure about its business, affiliations and compensation in the agreement; to not access the client's accounts or holdings for offering advice; to disclose the risk profile to the client; to disclose any conflict of interest of the investment advisory activities with any other activities of the investment adviser; to disclose the extent of use of Artificial Intelligence tools in providing investment advisory services.</li>
+        <li>To provide investment advice to the client based on the risk-profiling of the clients and suitability of the client.</li>
+        <li>To treat all advisory clients with honesty and integrity.</li>
+        <li>To make adequate disclosure to the investor of all material facts such as risks, obligations, costs, etc. relating to the products or securities advised by the adviser.</li>
+        <li>To provide clear guidance and adequate caution notice to clients when providing investment advice for dealing in complex and high-risk financial products / services.</li>
+        <li>To ensure confidentiality of information shared by clients unless such information is required to be provided in furtherance of discharging legal obligations or a client has provided specific consent to share such information.</li>
+        <li>To disclose the timelines for the various services provided by the investment adviser to clients and ensure adherence to the said timelines.</li>
+      </ul></div>
+      </details>
+      <details class="acc"><summary>D. Details of grievance redressal mechanism and how to access it</summary>
+        <div class="acc-body"><ul class="plist">
+        <li><strong>With the Investment Adviser —</strong> in case of any grievance or complaint, an investor may approach the concerned Investment Adviser who shall strive to redress the grievance immediately, but not later than 21 days of the receipt of the grievance.</li>
+        <li><strong>On SCORES or with IAASB —</strong> SCORES 2.0, a web-based centralised grievance redressal system of SEBI for facilitating effective grievance redressal in a time-bound manner (<a href="https://scores.sebi.gov.in" rel="noopener">scores.sebi.gov.in</a>). There is a two-level review for a complaint against an investment adviser: first review by the designated body (IAASB), second review by SEBI. A complaint may also be emailed to the designated email ID of IAASB.</li>
+        <li><strong>SMART ODR —</strong> if the investor is not satisfied with the resolution provided by the market participant, the investor has the option to file the complaint or grievance on the SMARTODR platform for resolution through online conciliation or arbitration (<a href="https://smartodr.in" rel="noopener">smartodr.in</a>).</li>
+        <li><strong>Physical complaints —</strong> Office of Investor Assistance and Education, Securities and Exchange Board of India, SEBI Bhavan, Plot No. C4-A, 'G' Block, Bandra-Kurla Complex, Bandra (East), Mumbai — 400 051.</li>
+      </ul></div>
+      </details>
+      <details class="acc"><summary>E. Rights of investors</summary>
+        <div class="acc-body"><ul class="plist">
+        <li>Right to privacy and confidentiality.</li>
+        <li>Right to transparent practices.</li>
+        <li>Right to fair and equitable treatment.</li>
+        <li>Right to adequate information.</li>
+        <li>Right to initial and continuing disclosure — right to receive information about all the statutory and regulatory disclosures.</li>
+        <li>Right to fair and true advertisement.</li>
+        <li>Right to awareness about service parameters and turnaround times.</li>
+        <li>Right to be informed of the timelines for each service.</li>
+        <li>Right to be heard and satisfactory grievance redressal; right to have timely redressal.</li>
+        <li>Right to suitability of the financial products.</li>
+        <li>Right to exit from a financial product or service in accordance with the terms of agreement with the investment adviser.</li>
+        <li>Right to receive clear guidance and caution notice when dealing in complex and high-risk financial products and services.</li>
+        <li>Additional rights to vulnerable consumers — right to get access to services in a suitable manner even if differently abled.</li>
+        <li>Right to provide feedback on the financial products and services used.</li>
+        <li>Right against coercive, unfair, and one-sided clauses in financial agreements.</li>
+      </ul></div>
+      </details>
+      <details class="acc"><summary>F. Expectations from the investors (responsibilities of investors)</summary>
+        <div class="acc-body"><h3 class="sub">Do's</h3>
+      <ol class="plist">
+        <li>Always deal with SEBI registered Investment Advisers.</li>
+        <li>Ensure that the Investment Adviser has a valid registration certificate.</li>
+        <li>Check for SEBI registration number. Refer to the list of all SEBI registered Investment Advisers available on the <a href="https://www.sebi.gov.in/sebiweb/other/OtherAction.do?doRecognisedFpi=yes&amp;intmId=13" rel="noopener">SEBI website</a>.</li>
+        <li>Pay only advisory fees to your Investment Adviser. Make payments of advisory fees through banking channels only and maintain duly signed receipts mentioning the details of your payments. You may make payment of advisory fees through the Centralised Fee Collection Mechanism (CeFCoM) of IAASB if the investment adviser has opted for the mechanism.</li>
+        <li>Always ask for your risk profiling before accepting investment advice. Insist that the Investment Adviser provides advisory strictly on the basis of your risk profiling and takes into account available investment alternatives.</li>
+        <li>Ask all relevant questions and clear your doubts with your Investment Adviser before acting on advice.</li>
+        <li>Assess the risk–return profile of the investment as well as the liquidity and safety aspects before making investments.</li>
+        <li>Insist on getting the terms and conditions in writing duly signed and stamped. Read these terms and conditions carefully, particularly regarding advisory fees, advisory plans and category of recommendations, before dealing with any Investment Adviser.</li>
+        <li>Be vigilant in your transactions.</li>
+        <li>Approach the appropriate authorities for redressal of your doubts / grievances.</li>
+        <li>Inform SEBI about Investment Advisers offering assured or guaranteed returns.</li>
+        <li>Always be aware that you have the right to exit the service of an Investment Adviser.</li>
+        <li>Always be aware that you have the right to seek clarifications and clear guidance on advice.</li>
+        <li>Always be aware that you have the right to provide feedback to the Investment Adviser in respect of services received.</li>
+        <li>Always be aware that you will not be bound by any clause, prescribed by the investment adviser, which is contravening any regulatory provisions.</li>
+      </ol>
+      <h3 class="sub">Don'ts</h3>
+      <ol class="plist">
+        <li>Don't fall for stock tips offered under the pretext of investment advice.</li>
+        <li>Do not provide funds for investment to the Investment Adviser.</li>
+        <li>Don't fall for the promise of indicative or exorbitant or assured returns by the Investment Advisers. Don't let greed overcome rational investment decisions.</li>
+        <li>Don't fall prey to luring advertisements or market rumors.</li>
+        <li>Avoid doing transactions only on the basis of phone calls or messages from any Investment Adviser or its representatives.</li>
+        <li>Don't take decisions just because of repeated messages and calls by Investment Advisers.</li>
+        <li>Do not fall prey to limited period discount or other incentive, gifts, etc. offered by Investment Advisers.</li>
+        <li>Don't rush into making investments that do not match your risk taking appetite and investment goals.</li>
+        <li>Do not share login credential and password of your trading, demat or bank accounts with the Investment Adviser.</li>
+      </ol></div>
+      </details>
+      <span class="cite">Source — Annexure F, SEBI Master Circular for Investment Advisers, 06 February 2026</span>
+    </div>
+  </details>
+
+    <div data-ra>
+      <div class="sec-head" style="margin-top:52px;">
+        <p class="eyebrow">Investor Charter</p>
+        <h2>Investor Charter for Research Analysts</h2>
+        <p>Published as required by the SEBI Master Circular for Research Analysts, reproduced in full from Annexure D. Open the charter, then open any part of it.</p>
+      </div>
+      <details class="acc acc-top stat">
+    <summary>Investor Charter for Research Analysts <span class="hint">6 parts · Annexure D</span></summary>
+    <div class="acc-body acc-body-top">
+      <details class="acc"><summary>A. Vision and Mission Statements for investors</summary>
+        <div class="acc-body"><p><strong>Vision —</strong> Invest with knowledge &amp; safety.</p>
+        <p><strong>Mission —</strong> Every investor should be able to invest in right investment products based on their needs, manage and monitor them to meet their goals, access reports and enjoy financial wellness.</p></div>
+      </details>
+      <details class="acc"><summary>B. Details of business transacted by the Research Analyst with respect to the investors</summary>
+        <div class="acc-body"><ul class="plist">
+          <li>To publish research report based on the research activities of the RA.</li>
+          <li>To provide an independent unbiased view on securities.</li>
+          <li>To offer unbiased recommendation, disclosing the financial interests in recommended securities.</li>
+          <li>To provide research recommendation, based on analysis of publicly available information and known observations.</li>
+          <li>To conduct audit annually.</li>
+          <li>To ensure that all advertisements are in adherence to the provisions of the Advertisement Code for Research Analysts.</li>
+          <li>To maintain records of interactions, with all clients including prospective clients (prior to onboarding), where any conversation related to the research services has taken place.</li>
+        </ul></div>
+      </details>
+      <details class="acc"><summary>C. Details of services provided to investors (no indicative timelines)</summary>
+        <div class="acc-body"><ul class="plist">
+          <li><strong>Onboarding of clients —</strong> sharing of terms and conditions of research services; completing KYC of fee paying clients.</li>
+          <li><strong>Disclosure to clients —</strong> to disclose information that is material for the client to make an informed decision, including details of its business activity, disciplinary history, the terms and conditions of research services, details of associates, risks and conflicts of interest, if any; to disclose the extent of use of Artificial Intelligence tools in providing research services; to disclose, while distributing a third party research report, any material conflict of interest of such third party research provider or provide a web address that directs a recipient to the relevant disclosures; to disclose any conflict of interest of the activities of providing research services with other activities of the research analyst.</li>
+          <li>To distribute research reports and recommendations to the clients without discrimination.</li>
+          <li>To maintain confidentiality with respect to publication of the research report until made available in the public domain.</li>
+          <li>To respect data privacy rights of clients and take measures to protect unauthorized use of their confidential information.</li>
+          <li>To disclose the timelines for the services provided by the research analyst to clients and ensure adherence to the said timelines.</li>
+          <li>To provide clear guidance and adequate caution notice to clients when providing recommendations for dealing in complex and high-risk financial products / services.</li>
+          <li>To treat all clients with honesty and integrity.</li>
+          <li>To ensure confidentiality of information shared by clients unless such information is required to be provided in furtherance of discharging legal obligations or a client has provided specific consent to share such information.</li>
+        </ul></div>
+      </details>
+      <details class="acc"><summary>D. Details of grievance redressal mechanism and how to access it</summary>
+        <div class="acc-body"><ul class="plist">
+          <li><strong>With the Research Analyst —</strong> in case of any grievance or complaint, an investor may approach the concerned Research Analyst who shall strive to redress the grievance immediately, but not later than 21 days of the receipt of the grievance.</li>
+          <li><strong>On SCORES or with RAASB —</strong> SCORES 2.0 (<a href="https://scores.sebi.gov.in" rel="noopener">scores.sebi.gov.in</a>), with a two-level review — first review by the designated body (RAASB), second review by SEBI. A complaint may also be emailed to the designated email ID of RAASB.</li>
+          <li><strong>SMART ODR —</strong> if not satisfied with the resolution provided, the investor may file the complaint on the SMARTODR platform for resolution through online conciliation or arbitration (<a href="https://smartodr.in" rel="noopener">smartodr.in</a>).</li>
+          <li><strong>Physical complaints —</strong> Office of Investor Assistance and Education, Securities and Exchange Board of India, SEBI Bhavan, Plot No. C4-A, 'G' Block, Bandra-Kurla Complex, Bandra (East), Mumbai — 400 051.</li>
+        </ul></div>
+      </details>
+      <details class="acc"><summary>E. Rights of investors</summary>
+        <div class="acc-body"><ul class="plist">
+          <li>Right to privacy and confidentiality; right to transparent practices; right to fair and equitable treatment; right to adequate information.</li>
+          <li>Right to initial and continuing disclosure — right to receive information about all the statutory and regulatory disclosures.</li>
+          <li>Right to fair and true advertisement; right to awareness about service parameters and turnaround times; right to be informed of the timelines for each service.</li>
+          <li>Right to be heard and satisfactory grievance redressal; right to have timely redressal.</li>
+          <li>Right to exit from a financial product or service in accordance with the terms and conditions agreed with the research analyst.</li>
+          <li>Right to receive clear guidance and caution notice when dealing in complex and high-risk financial products and services.</li>
+          <li>Additional rights to vulnerable consumers — right to get access to services in a suitable manner even if differently abled.</li>
+          <li>Right to provide feedback on the financial products and services used; right against coercive, unfair, and one-sided clauses in financial agreements.</li>
+        </ul></div>
+      </details>
+      <details class="acc"><summary>F. Expectations from the investors (responsibilities of investors)</summary>
+        <div class="acc-body"><h3 class="sub">Do's</h3>
+        <ol class="plist">
+          <li>Always deal with SEBI registered Research Analyst.</li>
+          <li>Ensure that the Research Analyst has a valid registration certificate.</li>
+          <li>Check for SEBI registration number. Refer to the list of all SEBI registered Research Analysts available on the <a href="https://www.sebi.gov.in/sebiweb/other/OtherAction.do?doRecognisedFpi=yes&amp;intmId=14" rel="noopener">SEBI website</a>.</li>
+          <li>Always pay attention towards disclosures made in the research reports before investing.</li>
+          <li>Pay your Research Analyst through banking channels only and maintain duly signed receipts mentioning the details of your payments. You may make payment of fees through the Centralised Fee Collection Mechanism (CeFCoM) of RAASB if the research analyst has opted for the mechanism (applicable for fee paying clients only).</li>
+          <li>Before buying / selling securities or applying in a public offer, check for the research recommendation provided by your Research Analyst.</li>
+          <li>Ask all relevant questions and clear your doubts with your Research Analyst before acting on a recommendation.</li>
+          <li>Seek clarifications and guidance on research recommendations from your Research Analyst, especially if it involves complex and high risk financial products and services.</li>
+          <li>Always be aware that you have the right to stop availing the service of a Research Analyst as per the terms of service agreed between you and your Research Analyst.</li>
+          <li>Always be aware that you have the right to provide feedback to your Research Analyst in respect of the services received.</li>
+          <li>Always be aware that you will not be bound by any clause, prescribed by the research analyst, which is contravening any regulatory provisions.</li>
+          <li>Inform SEBI about Research Analyst offering assured or guaranteed returns.</li>
+        </ol>
+        <h3 class="sub">Don'ts</h3>
+        <ol class="plist">
+          <li>Do not provide funds for investment to the Research Analyst.</li>
+          <li>Don't fall prey to luring advertisements or market rumors.</li>
+          <li>Do not get attracted to limited period discount or other incentive, gifts, etc. offered by Research Analyst.</li>
+          <li>Do not share login credential and password of your trading, demat or bank accounts with the Research Analyst.</li>
+        </ol></div>
+      </details>
+      <span class="cite">Source — Annexure D, SEBI Master Circular for Research Analysts, 06 February 2026</span>
+    </div>
+  </details>
+    </div>
+  </div>
+</section>
+
+<section id="grievance" aria-labelledby="grievance-h">
+  <div class="wrap sec-pad">
+    <div class="sec-head">
+      <p class="eyebrow">If something goes wrong</p>
+      <h2 id="grievance-h">Grievance redressal and escalation matrix</h2>
+      <p>Every complaint is acknowledged on receipt and redressed as soon as possible, and in any case not later than 21 days from the date it is received.</p>
+    </div>
+
+    <div class="tscroll" tabindex="0" role="region" aria-label="Grievance escalation matrix, scrollable">
+      <table class="reg">
+        <caption>Escalation matrix</caption>
+        <thead>
+          <tr>
+            <th scope="col">Level</th>
+            <th scope="col">Contact</th>
+            <th scope="col">Address / platform</th>
+            <th scope="col">Email</th>
+            <th scope="col">Telephone</th>
+            <th scope="col">Turnaround</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1 — Investment Adviser<span data-ra> / Research Analyst</span></th>
+            <td>Nithin P, Principal Officer and Compliance Officer</td>
+            <td>Krishna H, Thathamangalam, Palakkad, Kerala — 678102</td>
+            <td><a href="mailto:nithinp90@gmail.com">nithinp90@gmail.com</a></td>
+            <td><a href="tel:+919544927559">+91 95449 27559</a></td>
+            <td>Acknowledged on receipt; redressed not later than 21 days</td>
+          </tr>
+          <tr>
+            <th scope="row">2 — SEBI SCORES 2.0</th>
+            <td>SEBI Complaint Redress System; first review by IAASB<span data-ra> / RAASB</span>, second review by SEBI</td>
+            <td><a href="https://scores.sebi.gov.in" rel="noopener">scores.sebi.gov.in</a></td>
+            <td>—</td>
+            <td>Toll free 1800 22 7575 / 1800 266 7575</td>
+            <td>As specified on SCORES</td>
+          </tr>
+          <tr>
+            <th scope="row">3 — Smart ODR</th>
+            <td>Online conciliation or arbitration, if the SCORES outcome is unsatisfactory</td>
+            <td><a href="https://smartodr.in" rel="noopener">smartodr.in</a></td>
+            <td>—</td>
+            <td>—</td>
+            <td>As specified on the ODR portal</td>
+          </tr>
+          <tr>
+            <th scope="row">4 — Physical complaint to SEBI</th>
+            <td>Office of Investor Assistance and Education, SEBI</td>
+            <td>SEBI Bhavan, Plot No. C4-A, 'G' Block, Bandra-Kurla Complex, Bandra (East), Mumbai — 400 051</td>
+            <td>—</td>
+            <td>—</td>
+            <td>As advised by SEBI</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tfoot">Corresponding SEBI office for this adviser: Southern Regional Office, SEBI, 7th Floor, 756-L, Anna Salai, Chennai — 600002 · +91-44-28880222 / 28526686 · <a href="mailto:sebisro@sebi.gov.in">sebisro@sebi.gov.in</a>.<span data-ra> A grievance relating to non-receipt of a research report, missing pages or inability to download a report, or any other deficiency in research services, is resolved within 7 business working days.</span></p>
+
+    <div class="stat">
+      <p><strong>Dear Investor,</strong></p>
+      <p>In case of any grievance / complaint against the investment adviser:</p>
+      <ul class="plist">
+        <li>Please contact the Compliance Officer of the investment adviser, <strong>Nithin P</strong>, Krishna H, Thathamangalam, Palakkad, Kerala — 678102, email <a href="mailto:nithinp90@gmail.com">nithinp90@gmail.com</a>, phone +91-9544927559.</li>
+        <li>You may also approach the Proprietor, <strong>Nithin P</strong>, email <a href="mailto:nithinp90@gmail.com">nithinp90@gmail.com</a>, phone +91-9544927559.</li>
+        <li>If not satisfied with the response of the investment adviser you can lodge your grievances with SEBI at <a href="https://scores.sebi.gov.in" rel="noopener">scores.sebi.gov.in</a> or you may also write to any of the offices of SEBI. For any queries, feedback or assistance, please contact SEBI Office on Toll Free Helpline at 1800 22 7575 / 1800 266 7575.</li>
+      </ul>
+      <span class="cite">Text prescribed by the SEBI Master Circular for Investment Advisers (redressal of investor grievances through SCORES and the ODR platform)</span>
+    </div>
+  </div>
+</section>
+
+<section id="complaints" aria-labelledby="complaints-h">
+  <div class="wrap sec-pad">
+    <div class="sec-head">
+      <p class="eyebrow">Investor complaints</p>
+      <h2 id="complaints-h">Complaint status and disposal</h2>
+      <p>Disclosed in the format at Annexure C of the SEBI Master Circular for Investment Advisers and updated by the 7th of each succeeding month. The last six months of the trend are shown below; every month since registration is available under "all months".</p>
+    </div>
+
+    <div id="complaint-status" class="status-block">
+      <div class="band-top">
+      <h2>Investor complaint status</h2>
+      <span class="band-month">Data for the month ending — <span class="fill" data-role="band-month" title="Updated from the admin panel by the 7th of every month">30 September 2026</span></span>
+    </div>
+    <div class="tscroll" tabindex="0" role="region" aria-label="Investor complaint data for the month, scrollable">
+      <table class="reg">
+        <caption>Annexure C format · SEBI Master Circular for Investment Advisers</caption>
+        <thead>
+          <tr>
+            <th scope="col">Sr. No.</th>
+            <th scope="col">Received from</th>
+            <th scope="col">Pending at the end of last month</th>
+            <th scope="col">Received</th>
+            <th scope="col">Resolved<span aria-hidden="true">*</span></th>
+            <th scope="col">Total Pending<span aria-hidden="true">#</span></th>
+            <th scope="col">Pending complaints &gt; 3 months</th>
+            <th scope="col">Average Resolution time<span aria-hidden="true">^</span> (in days)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr data-src="direct"><td>1</td><th scope="row">Directly from Investors</th><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+          <tr data-src="scores"><td>2</td><th scope="row">SEBI (SCORES)</th><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+          <tr data-src="other"><td>3</td><th scope="row">Other Sources (if any)</th><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+          <tr class="total" data-src="total"><td></td><th scope="row">Grand Total</th><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="band-note">Number of complaints received during the month against the Investment Adviser due to impersonation by some other entity: <strong data-role="band-imp">0</strong>. Registration as an Investment Adviser was granted on 07 September 2026, so September 2026 is the first reporting month.</p>
+    <p class="tfoot"><span aria-hidden="true">*</span> Inclusive of complaints of previous months resolved in the current month. <span aria-hidden="true">#</span> Inclusive of complaints pending as on the last day of the month. <span aria-hidden="true">^</span> Average resolution time is the sum total of time taken to resolve each complaint in days, in the current month, divided by the total number of complaints resolved in the current month. The monthly and annual trend tables follow below.</p>
+    </div>
+
+    <div class="tscroll" tabindex="0" role="region" aria-label="Trend of monthly disposal of complaints, last six months, scrollable">
+      <table class="reg">
+        <caption>Trend of monthly disposal of complaints — last 6 months</caption>
+        <thead>
+          <tr>
+            <th scope="col">Sr. No.</th>
+            <th scope="col">Month</th>
+            <th scope="col">Carried forward from previous month</th>
+            <th scope="col">Received</th>
+            <th scope="col">Resolved<span aria-hidden="true">*</span></th>
+            <th scope="col">Pending<span aria-hidden="true">#</span></th>
+          </tr>
+        </thead>
+        <tbody data-role="trend-recent">
+          <tr><td>1</td><th scope="row">September 2026</th><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+        </tbody>
+        <tfoot>
+          <tr class="total"><td></td><th scope="row">Total (shown months)</th><td data-role="recent-cf">0</td><td data-role="recent-rec">0</td><td data-role="recent-res">0</td><td data-role="recent-pen">0</td></tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <details class="more">
+      <summary>All months since registration (September 2026 onwards)</summary>
+      <div class="tscroll" tabindex="0" role="region" aria-label="All months since registration, scrollable">
+        <table class="reg">
+          <caption>Trend of monthly disposal of complaints — every month since registration</caption>
+          <thead>
+            <tr>
+              <th scope="col">Sr. No.</th>
+              <th scope="col">Month</th>
+              <th scope="col">Carried forward from previous month</th>
+              <th scope="col">Received</th>
+              <th scope="col">Resolved<span aria-hidden="true">*</span></th>
+              <th scope="col">Pending<span aria-hidden="true">#</span></th>
+            </tr>
+          </thead>
+          <tbody data-role="trend-all">
+            <tr><td>1</td><th scope="row">September 2026</th><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+          </tbody>
+          <tfoot>
+            <tr class="total"><td></td><th scope="row">Grand Total</th><td data-role="all-cf">0</td><td data-role="all-rec">0</td><td data-role="all-res">0</td><td data-role="all-pen">0</td></tr>
+          </tfoot>
+        </table>
+      </div>
+    </details>
+
+    <div class="tscroll" tabindex="0" role="region" aria-label="Trend of annual disposal of complaints, scrollable" style="margin-top:20px;">
+      <table class="reg">
+        <caption>Trend of annual disposal of complaints</caption>
+        <thead>
+          <tr>
+            <th scope="col">Sr. No.</th>
+            <th scope="col">Year</th>
+            <th scope="col">Carried forward from previous year</th>
+            <th scope="col">Received</th>
+            <th scope="col">Resolved<span aria-hidden="true">*</span></th>
+            <th scope="col">Pending<span aria-hidden="true">#</span></th>
+          </tr>
+        </thead>
+        <tbody data-role="annual">
+          <tr><td>1</td><th scope="row">2026-27 (from 07 September 2026)</th><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+        </tbody>
+        <tfoot>
+          <tr class="total"><td></td><th scope="row">Grand Total</th><td data-role="ann-cf">0</td><td data-role="ann-rec">0</td><td data-role="ann-res">0</td><td data-role="ann-pen">0</td></tr>
+        </tfoot>
+      </table>
+    </div>
+    <p class="tfoot"><span aria-hidden="true">*</span> Inclusive of complaints of previous months resolved in the current month. <span aria-hidden="true">#</span> Inclusive of complaints pending as on the last day of the month.</p>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-pad">
+    <nav aria-label="Regulatory links">
+      <ul class="foot-links">
+        <li><a href="#complaint-status">Complaint data</a></li>
+        <li><a href="#charter">Investor Charter</a></li>
+        <li><a href="#terms">MITC</a></li>
+        <li><a href="#grievance">Grievance redressal</a></li>
+        <li><a href="#disclosures">Disclosures</a></li>
+        <li><a href="#enquiry">Enquiry</a></li>
+        <li><a href="https://scores.sebi.gov.in" rel="noopener">SEBI SCORES</a></li>
+        <li><a href="https://smartodr.in" rel="noopener">Smart ODR</a></li>
+        <li><a href="https://www.sebi.gov.in" rel="noopener">SEBI</a></li>
+        <li><a href="https://www.bseindia.com" rel="noopener">BSE (IAASB<span data-ra> / RAASB</span>)</a></li>
+      </ul>
+    </nav>
+
+    <div class="foot-grid">
+      <div>
+        <h2>Registered particulars</h2>
+        <ul class="foot-list">
+          <li><b>NITHIN P</b> — trading as MyFinancial</li>
+          <li>SEBI Registered Investment Adviser — Individual</li>
+          <li>Registration no. <b>INA000023162</b> · Validity 07 September 2026 — Perpetual</li>
+          <li data-ra>SEBI Registered Research Analyst — Registration no. <b><span class="fill" data-site="ra_reg_no">INH00000000</span></b> · Validity <span class="fill">DD Mon YYYY</span> — Perpetual</li>
+          <li>Enlisted with IAASB (BSE Limited), membership no. <b><span class="fill" data-site="basl_no">BASL/IAASB no.</span></b><span data-ra> · RAASB membership no. <span class="fill" data-site="raasb_no">RAASB no.</span></span></li>
+          <li>Krishna H, Thathamangalam, Palakkad, Kerala — 678102, India</li>
+          <li>Telephone <a href="tel:+919544927559">+91 95449 27559</a> · Email <a href="mailto:nithinp90@gmail.com">nithinp90@gmail.com</a></li>
+          <li>Principal Officer, Compliance Officer and Grievance Officer: <b>Nithin P</b></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Corresponding SEBI office</h2>
+        <ul class="foot-list">
+          <li>Southern Regional Office</li>
+          <li>Securities and Exchange Board of India</li>
+          <li>7th Floor, 756-L, Anna Salai, Chennai — 600002, Tamil Nadu</li>
+          <li>+91-44-28880222 / 28526686 · <a href="mailto:sebisro@sebi.gov.in">sebisro@sebi.gov.in</a></li>
+          <li style="margin-top:12px;">SEBI toll-free investor helpline: <b>1800 22 7575 / 1800 266 7575</b></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="legal">
+      <p><strong>Investment in securities market are subject to market risks. Read all the related documents carefully before investing.</strong></p>
+      <p data-ria-only>Registration granted by SEBI, enlistment with BSE and certification from NISM in no way guarantee performance of the IA or provide any assurance of returns to investors.</p>
+      <p data-ra>Registration granted by SEBI, enlistment with BSE and certification from NISM in no way guarantee performance of the intermediary or provide any assurance of returns to investors.</p>
+      <p>The securities quoted on this site or on the myfinancial data platform are for illustration only and are not recommendatory. Nothing on this website is investment advice or a research recommendation to any person; advice is given only to clients, in writing, after risk profiling and a suitability assessment, under a signed agreement. Services relating to products that are not securities do not come under the regulatory purview of SEBI and no recourse is available with SEBI for grievances relating to them.</p>
+      <p>© <span id="yr">2026</span> Nithin P (MyFinancial). All rights reserved. Last updated <span class="fill" data-site="last_updated" title="Update when you change this page">20 September 2026</span>.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ============================================================================
+   MyFinancial — one file, no dependencies.
+
+   The page is complete and compliant with JavaScript switched off: every
+   mandatory disclosure, including the complaint tables, is in the HTML.
+   Script only (a) refreshes those numbers from the admin panel's data,
+   (b) submits the enquiry form, (c) remembers the theme.
+
+   To connect the admin/database backend, set API_BASE to its origin.
+   Leave it "" on a purely static host: the page then reads data/complaints.json
+   and data/site.json if they exist, and the enquiry form falls back to email.
+   ========================================================================= */
+var CONFIG = {
+  // Leave API_BASE empty when the site and the admin server share an origin, or when
+  // the site is on a static host: the page tries the API first and falls back to the
+  // JSON files in data/. Set it only when the API lives on a different origin.
+  API_BASE: "",
+  DATA_URL: "data/complaints.json",
+  SITE_URL: "data/site.json",
+  CONTACT_EMAIL: "nithinp90@gmail.com",
+  RECENT_MONTHS: 6
+};
+
+(function () {
+  "use strict";
+  var $ = function (sel, root) { return (root || document).querySelector(sel); };
+  var $$ = function (sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); };
+  var MONTHS = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+  var SOURCES = ["direct", "scores", "other"];
+
+  /* ---------------- theme ---------------- */
+  var root = document.documentElement, btn = $("#theme-toggle");
+  var store = {
+    get: function (k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
+    set: function (k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+  };
+  var saved = store.get("myfin.theme");
+  if (saved === "light" || saved === "dark") root.setAttribute("data-theme", saved);
+  function currentTheme() {
+    var attr = root.getAttribute("data-theme");
+    if (attr) return attr;
+    return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  }
+  function paintToggle() {
+    var next = currentTheme() === "dark" ? "light" : "dark";
+    btn.textContent = next === "dark" ? "Dark" : "Light";
+    btn.setAttribute("aria-label", "Switch to " + next + " theme");
+  }
+  if (btn) {
+    btn.hidden = false;
+    paintToggle();
+    btn.addEventListener("click", function () {
+      var next = currentTheme() === "dark" ? "light" : "dark";
+      root.setAttribute("data-theme", next);
+      store.set("myfin.theme", next);
+      paintToggle();
+    });
+  }
+  var yr = $("#yr");
+  if (yr) yr.textContent = String(new Date().getFullYear());
+
+  /* ---------------- helpers ---------------- */
+  function monthLabel(ym) {
+    var bits = String(ym).split("-");
+    return MONTHS[parseInt(bits[1], 10) - 1] + " " + bits[0];
+  }
+  function monthEndLabel(ym) {
+    var bits = String(ym).split("-");
+    var y = parseInt(bits[0], 10), m = parseInt(bits[1], 10);
+    return new Date(y, m, 0).getDate() + " " + MONTHS[m - 1] + " " + y;
+  }
+  function financialYear(ym) {
+    var bits = String(ym).split("-");
+    var y = parseInt(bits[0], 10), m = parseInt(bits[1], 10);
+    var start = m >= 4 ? y : y - 1;
+    return start + "-" + String((start + 1) % 100).padStart(2, "0");
+  }
+  function num(v) { return typeof v === "number" && isFinite(v) ? v : 0; }
+  function sumRows(month, key) {
+    return SOURCES.reduce(function (t, src) { return t + num(month.rows && month.rows[src] && month.rows[src][key]); }, 0);
+  }
+  function cell(text) { var td = document.createElement("td"); td.textContent = text; return td; }
+  function rowHead(text) { var th = document.createElement("th"); th.scope = "row"; th.textContent = text; return th; }
+  function fmtDays(v) { return Math.round(num(v) * 10) / 10; }
+
+  /* ---------------- render: homepage complaint band ---------------- */
+  function renderBand(month) {
+    var el = $('[data-role="band-month"]');
+    if (el) { el.textContent = monthEndLabel(month.month); el.classList.remove("fill"); }
+    var imp = $('[data-role="band-imp"]');
+    if (imp) imp.textContent = String(num(month.impersonation));
+    var totals = { pending_last: 0, received: 0, resolved: 0, pending_total: 0, pending_gt3m: 0 };
+    var resolvedDaysWeighted = 0;
+    SOURCES.forEach(function (src) {
+      var r = (month.rows && month.rows[src]) || {};
+      var tr = $('#complaint-status tr[data-src="' + src + '"]');
+      if (!tr) return;
+      var tds = tr.querySelectorAll("td");
+      var vals = [r.pending_last, r.received, r.resolved, r.pending_total, r.pending_gt3m, r.avg_days];
+      for (var i = 0; i < 6; i++) {
+        if (tds[i + 1]) tds[i + 1].textContent = i === 5 ? String(fmtDays(vals[i])) : String(num(vals[i]));
+      }
+      ["pending_last", "received", "resolved", "pending_total", "pending_gt3m"].forEach(function (k) { totals[k] += num(r[k]); });
+      resolvedDaysWeighted += num(r.resolved) * num(r.avg_days);
+    });
+    var avg = totals.resolved ? resolvedDaysWeighted / totals.resolved : 0;
+    var order = [totals.pending_last, totals.received, totals.resolved, totals.pending_total, totals.pending_gt3m, fmtDays(avg)];
+    var trT = $('#complaint-status tr[data-src="total"]');
+    if (trT) {
+      var t = trT.querySelectorAll("td");
+      for (var j = 0; j < 6; j++) { if (t[j + 1]) t[j + 1].textContent = String(order[j]); }
+    }
+    var sbMonth = $('[data-role="sb-month"]');
+    if (sbMonth) sbMonth.textContent = monthLabel(month.month);
+    for (var k = 0; k < 6; k++) {
+      var sb = $('[data-role="sb-' + k + '"]');
+      if (sb) sb.textContent = String(order[k]);
+    }
+  }
+
+  /* ---------------- render: monthly + annual trends ---------------- */
+  function trendRow(index, month) {
+    var tr = document.createElement("tr");
+    tr.appendChild(cell(String(index)));
+    tr.appendChild(rowHead(monthLabel(month.month)));
+    tr.appendChild(cell(String(sumRows(month, "pending_last"))));
+    tr.appendChild(cell(String(sumRows(month, "received"))));
+    tr.appendChild(cell(String(sumRows(month, "resolved"))));
+    tr.appendChild(cell(String(sumRows(month, "pending_total"))));
+    return tr;
+  }
+  function fillTotals(prefix, months) {
+    var keys = ["pending_last", "received", "resolved", "pending_total"];
+    var names = ["cf", "rec", "res", "pen"];
+    keys.forEach(function (k, i) {
+      var el = $('[data-role="' + prefix + "-" + names[i] + '"]');
+      if (el) el.textContent = String(months.reduce(function (t, m) { return t + sumRows(m, k); }, 0));
+    });
+  }
+  function renderTrends(months) {
+    var recentBody = $('[data-role="trend-recent"]'), allBody = $('[data-role="trend-all"]');
+    var recent = months.slice(-CONFIG.RECENT_MONTHS);
+    if (recentBody) {
+      recentBody.textContent = "";
+      recent.forEach(function (m, i) { recentBody.appendChild(trendRow(i + 1, m)); });
+      fillTotals("recent", recent);
+    }
+    if (allBody) {
+      allBody.textContent = "";
+      months.forEach(function (m, i) { allBody.appendChild(trendRow(i + 1, m)); });
+      fillTotals("all", months);
+    }
+    var moreWrap = $("details.more");
+    if (moreWrap) {
+      var summary = moreWrap.querySelector("summary");
+      if (summary) summary.textContent = "All months since registration (" + months.length + " month" + (months.length === 1 ? "" : "s") + ")";
+      moreWrap.hidden = months.length <= CONFIG.RECENT_MONTHS;
+    }
+  }
+  function renderAnnual(months) {
+    var body = $('[data-role="annual"]');
+    if (!body) return;
+    var years = [], byYear = {};
+    months.forEach(function (m) {
+      var fy = financialYear(m.month);
+      if (!byYear[fy]) { byYear[fy] = []; years.push(fy); }
+      byYear[fy].push(m);
+    });
+    body.textContent = "";
+    var totals = { cf: 0, rec: 0, res: 0, pen: 0 };
+    years.forEach(function (fy, i) {
+      var list = byYear[fy];
+      var cf = sumRows(list[0], "pending_last");
+      var rec = list.reduce(function (t, m) { return t + sumRows(m, "received"); }, 0);
+      var res = list.reduce(function (t, m) { return t + sumRows(m, "resolved"); }, 0);
+      var pen = sumRows(list[list.length - 1], "pending_total");
+      var label = fy === "2026-27" ? "2026-27 (from 07 September 2026)" : fy;
+      var tr = document.createElement("tr");
+      tr.appendChild(cell(String(i + 1)));
+      tr.appendChild(rowHead(label));
+      [cf, rec, res, pen].forEach(function (v) { tr.appendChild(cell(String(v))); });
+      body.appendChild(tr);
+      totals.cf += cf; totals.rec += rec; totals.res += res; totals.pen += pen;
+    });
+    ["cf", "rec", "res", "pen"].forEach(function (k) {
+      var el = $('[data-role="ann-' + k + '"]');
+      if (el) el.textContent = String(totals[k]);
+    });
+  }
+
+  /* ---------------- site details (admin-managed placeholders) ---------------- */
+  function applySite(site) {
+    if (!site) return;
+    $$("[data-site]").forEach(function (el) {
+      var v = site[el.getAttribute("data-site")];
+      if (typeof v === "string" && v.trim()) { el.textContent = v.trim(); el.classList.remove("fill"); }
+    });
+    // the authoritative RA switch is the data-ra-status attribute in the HTML;
+    // the admin panel may turn it on, never off.
+    if (site.ra_status === "active") root.setAttribute("data-ra-status", "active");
+  }
+
+  /* ---------------- load ---------------- */
+  function getJSON(url) {
+    return fetch(url, { cache: "no-store", credentials: "omit" }).then(function (r) {
+      if (!r.ok) throw new Error(r.status + " " + url);
+      return r.json();
+    });
+  }
+  var api = { base: CONFIG.API_BASE ? CONFIG.API_BASE.replace(/\/$/, "") : "", live: false };
+  function apiUrl(pathname) { return api.base ? api.base + "/api/" + pathname : "api/" + pathname; }
+
+  function renderComplaints(data) {
+    var months = (data && data.months ? data.months : []).slice().sort(function (a, b) {
+      return a.month < b.month ? -1 : a.month > b.month ? 1 : 0;
+    });
+    if (!months.length) return;
+    renderBand(months[months.length - 1]);
+    renderTrends(months);
+    renderAnnual(months);
+  }
+
+  function load() {
+    // the admin server, if this page is served by it; otherwise the committed JSON;
+    // otherwise whatever is printed in the HTML, which is always complete on its own.
+    getJSON(apiUrl("complaints"))
+      .then(function (data) { api.live = true; renderComplaints(data); })
+      .catch(function () { return getJSON(CONFIG.DATA_URL).then(renderComplaints).catch(function () {}); });
+    getJSON(apiUrl("site"))
+      .then(applySite)
+      .catch(function () { return getJSON(CONFIG.SITE_URL).then(applySite).catch(function () {}); });
+  }
+  load();
+
+  /* ---------------- enquiry form ---------------- */
+  var form = $("#enquiry-form");
+  if (form) {
+    var status = $("#form-status");
+    function setError(field, message) {
+      var wrap = field.closest(".field") || field.closest(".consent");
+      if (!wrap) return;
+      wrap.classList.add("invalid");
+      var e = wrap.querySelector(".err");
+      if (!e) { e = document.createElement("span"); e.className = "err"; wrap.appendChild(e); }
+      e.textContent = message;
+      field.setAttribute("aria-invalid", "true");
+    }
+    function clearErrors() {
+      $$(".invalid", form).forEach(function (w) { w.classList.remove("invalid"); });
+      $$(".err", form).forEach(function (e) { e.remove(); });
+      $$("[aria-invalid]", form).forEach(function (f) { f.removeAttribute("aria-invalid"); });
+    }
+    function validate(data) {
+      var bad = [];
+      if (!data.name || data.name.length < 2) bad.push(["#f-name", "Please tell us your name."]);
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(data.email || "")) bad.push(["#f-email", "Please enter an email address we can reply to."]);
+      if ((data.phone || "").replace(/\D/g, "").length < 8) bad.push(["#f-phone", "Please enter a phone number with at least 8 digits."]);
+      if (!$("#f-consent").checked) bad.push(["#f-consent", "We need your agreement before we can store these details."]);
+      return bad;
+    }
+    function mailtoFallback(data) {
+      var lines = [
+        "Name: " + data.name, "Email: " + data.email, "Phone: " + data.phone,
+        "City: " + (data.city || "—"), "Residency: " + data.residency, "Interested in: " + data.service,
+        "", (data.message || "")
+      ];
+      window.location.href = "mailto:" + CONFIG.CONTACT_EMAIL +
+        "?subject=" + encodeURIComponent("Advisory enquiry — " + data.name) +
+        "&body=" + encodeURIComponent(lines.join("\n"));
+      status.className = "form-status ok";
+      status.textContent = "Your email app should now be open with the enquiry filled in — send that message and we will reply. If nothing opened, write to " + CONFIG.CONTACT_EMAIL + ".";
+    }
+    form.addEventListener("submit", function (ev) {
+      ev.preventDefault();
+      clearErrors();
+      var fd = new FormData(form), data = {};
+      ["name", "email", "phone", "city", "residency", "service", "message", "website"].forEach(function (k) {
+        data[k] = String(fd.get(k) || "").trim();
+      });
+      data.consent = $("#f-consent").checked;
+      var bad = validate(data);
+      if (bad.length) {
+        bad.forEach(function (b) { setError($(b[0]), b[1]); });
+        status.className = "form-status bad";
+        status.textContent = "Please check the highlighted fields.";
+        $(bad[0][0]).focus();
+        return;
+      }
+      var submit = form.querySelector("button[type=submit]");
+      if (!api.live) { mailtoFallback(data); return; }   // static host: send it by email instead
+      submit.disabled = true;
+      status.className = "form-status";
+      status.textContent = "Sending…";
+      fetch(apiUrl("enquiries"), {
+        method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data)
+      }).then(function (r) {
+        if (!r.ok) throw new Error(String(r.status));
+        form.reset();
+        status.className = "form-status ok";
+        status.textContent = "Thank you — your enquiry has been recorded. You will get a reply from Nithin P at the email address you gave.";
+      }).catch(function () {
+        status.className = "form-status bad";
+        status.textContent = "That did not go through. Opening your email app instead…";
+        setTimeout(function () { mailtoFallback(data); }, 600);
+      }).then(function () { submit.disabled = false; });
+    });
+  }
+})();
+</script>
+</body>
+</html>
