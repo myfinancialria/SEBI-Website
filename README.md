@@ -24,9 +24,15 @@ payable.
 
 ## Running it
 
+Run it from inside the project folder — `server/server.js` is a path relative to it:
+
 ```bash
+gh repo clone myfinancialria/SEBI-Website ~/SEBI-Website   # first time only
+cd ~/SEBI-Website
 ADMIN_PASSWORD='pick-a-strong-one' node server/server.js
 ```
+
+From anywhere else, give Node the full path instead: `node ~/SEBI-Website/server/server.js`.
 
 - site — http://localhost:8080
 - admin — http://localhost:8080/admin
