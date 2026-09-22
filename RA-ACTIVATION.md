@@ -53,7 +53,6 @@ admin panel instead of edited in four places.
 
 ## What appears when you flip it
 
-- `Research` in the top navigation
 - The **Research services** section (reports, rule-based notes, model portfolio) with the Regulation 19 disclosure note
 - RA rows in the registration particulars and in the footer
 - The RA fee row in Fees (₹1,51,000 p.a. per family cap; advance limited to one quarter)

@@ -12,11 +12,12 @@ The page is complete on its own: every mandatory disclosure, including the compl
 written into the HTML and renders with JavaScript switched off. The database only keeps those numbers
 current and collects enquiries.
 
-**Page order:** intro → who we are → services → fees → how it works → enquiry → registration particulars →
-disclosures → MITC → Investor Charter → grievances → complaint data. A 37px strip under the header carries
-the six Annexure C grand-total figures, because SEBI wants complaint data on the homepage without
-scrolling; the full table lives in the complaints section at the foot of the page. See `COMPLIANCE-MAP.md`
-for why it is split that way.
+**Page order:** home → about → services → fees → process → enquiry → registration particulars →
+disclosures → MITC → Investor Charter → grievances → complaint data. The header links only the first five;
+every regulatory section is linked from the footer. A 37px strip under the header carries the six
+Annexure C grand-total figures, because SEBI wants complaint data on the homepage without scrolling; the
+full table lives in the complaints section at the foot of the page. See `COMPLIANCE-MAP.md` for why it is
+split that way.
 
 **Pricing** is shown as ₹19,999 (resident individual) and ₹29,999 (NRI), one-time, with no tax line. If you
 are GST-registered and charge it on top, say so on the cards — an unqualified price reads as the amount

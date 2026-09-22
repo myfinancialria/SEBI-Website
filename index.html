@@ -240,6 +240,23 @@ html[data-ra-status="active"] [data-ria-only] { display: none; }
 .status-block { margin-top: 26px; padding: 18px 20px 20px; border: 1px solid var(--line); background: var(--paper-2); }
 .status-block .band-top { margin-bottom: 2px; }
 
+/* ---------- home: the four questions ---------- */
+#home-h { max-width: none; }
+@media (min-width: 640px) { #home-h .alt { display: block; } }
+.hero-grid { margin-top: 36px; }
+.hero-grid .card { padding: 18px 20px 20px; }
+.hero-grid h2.q { margin: 0; font-size: 16px; font-weight: 700; letter-spacing: -.015em; line-height: 1.3; }
+.hero-grid .card p:last-child { margin-top: 6px; font-size: 13.5px; }
+
+/* a last card on its own row stretches across it instead of leaving a grey gap */
+@media (min-width: 900px) {
+  .g3 > :last-child:nth-child(3n+2) { grid-column: span 2; }
+  .g3 > :last-child:nth-child(3n+1) { grid-column: span 3; }
+}
+@media (min-width: 640px) and (max-width: 899px) {
+  .g3 > :last-child:nth-child(odd), .g4 > :last-child:nth-child(odd) { grid-column: span 2; }
+}
+
 /* ---------- accordions (Investor Charter, MITC, "all months") ---------- */
 details.acc { border: 1px solid var(--line); background: var(--paper-2); }
 details.acc + details.acc { border-top: 0; }
@@ -326,18 +343,11 @@ button.btn[disabled] { opacity: .55; cursor: progress; }
     <a class="logo" href="#top">my<b>financial</b></a>
     <nav class="site-nav" aria-label="Primary">
       <ul>
-        <li><a href="#who">About</a></li>
+        <li><a href="#about">About</a></li>
         <li><a href="#services">Services</a></li>
-        <li data-ra><a href="#research">Research</a></li>
         <li><a href="#fees">Fees</a></li>
         <li><a href="#process">Process</a></li>
         <li><a href="#enquiry">Enquiry</a></li>
-        <li><a href="#registration">Registration</a></li>
-        <li><a href="#disclosures">Disclosures</a></li>
-        <li><a href="#terms">MITC</a></li>
-        <li><a href="#charter">Charter</a></li>
-        <li><a href="#grievance">Grievances</a></li>
-        <li><a href="#complaints">Complaints</a></li>
       </ul>
     </nav>
     <div class="hspacer"></div>
@@ -369,43 +379,66 @@ button.btn[disabled] { opacity: .55; cursor: progress; }
 
 
 
-<section id="about" aria-labelledby="about-h" style="border-top: 0;">
+<section id="home" aria-labelledby="home-h" style="border-top: 0;">
   <div class="wrap hero-pad">
     <p class="eyebrow">SEBI Registered Investment Adviser · INA000023162<span data-ra> · Research Analyst · <span class="fill" data-site="ra_reg_no">INH00000000</span></span></p>
-    <h1 id="about-h">Advice that is paid for, <span class="alt">never sold.</span></h1>
-    <p class="lede">MyFinancial is the investment advisory practice of <strong>Nithin P</strong>, registered with the Securities and Exchange Board of India as an Investment Adviser. We are paid by the people we advise and by nobody else — no commission, no brokerage, no distribution, no product on the side.</p>
+    <h1 id="home-h">Build your wealth with a plan, <span class="alt">not with tips.</span></h1>
+    <p class="lede">Wealth is built slowly — by saving regularly, investing with a purpose and avoiding costly mistakes. We help you do all three, in plain language, for a fee you pay us directly.</p>
     <div class="btns">
       <a class="btn" href="#enquiry">Start an enquiry →</a>
       <a class="btn btn-ghost" href="#fees">See what it costs</a>
     </div>
+
+    <div class="grid g4 hero-grid">
+      <div class="card">
+        <p class="kicker">Cash flow</p>
+        <h2 class="q">Where does my money go?</h2>
+        <p>Your income, spending and savings, laid out in plain numbers.</p>
+      </div>
+      <div class="card">
+        <p class="kicker">Goals</p>
+        <h2 class="q">How much do I need?</h2>
+        <p>A home, your children's education, retirement — each goal gets an amount and a date.</p>
+      </div>
+      <div class="card">
+        <p class="kicker">Investments</p>
+        <h2 class="q">Am I invested right?</h2>
+        <p>What you already own, checked for cost, overlap and risk.</p>
+      </div>
+      <div class="card">
+        <p class="kicker">Next steps</p>
+        <h2 class="q">What do I do now?</h2>
+        <p>A short, clear list of steps you carry out in your own accounts.</p>
+      </div>
+    </div>
   </div>
 </section>
 
-<section id="who" aria-labelledby="who-h">
+<section id="about" aria-labelledby="about-h">
   <div class="wrap sec-pad">
     <div class="sec-head">
-      <p class="eyebrow">Who we are</p>
-      <h2 id="who-h">The idea behind the practice</h2>
-      <p>Most financial advice in India arrives as a sales conversation, with the cost of the advice buried inside the product. A fund pays a trail, an insurer pays a commission, a platform is paid for the shelf space — and the person across the table earns more for one answer than for another. Good intentions do not fix that arrangement. Removing it does.</p>
-      <p>MyFinancial removes it. The practice is registered with SEBI as an Investment Adviser, is paid a stated fee by the client, and earns nothing else from the advice it gives. Every recommendation is written down — the arithmetic behind it, the costs, the risks, and why this option rather than that one — so a client can check the reasoning instead of trusting the adviser's word for it.</p>
-      <p>The work is deliberately quantitative. Cash flows, funding gaps, taxes and after-cost returns are computed rather than asserted; where a figure is uncertain the range is shown; and where the honest answer is that nothing needs to change, that is the advice you get.</p>
+      <p class="eyebrow">About us</p>
+      <h2 id="about-h">Who we are</h2>
+      <p>MyFinancial is a financial planning and investment advisory practice run by <strong>Nithin P</strong>, a SEBI Registered Investment Adviser (INA000023162) based in Palakkad, Kerala.</p>
+      <p>We help individuals and families — in India and abroad — plan their money: how much to save, where to invest, and how to reach goals like buying a home, educating children and retiring comfortably.</p>
+      <p>We are <strong>fee-only</strong>. You pay us a fee for advice, and that is the only money we earn. We do not sell mutual funds, insurance or any other product, and we take no commission from anyone — so the only side our advice can be on is yours.</p>
     </div>
 
     <div class="grid g3">
       <article class="card">
-        <p class="kicker">01 — Fee-only</p>
-        <h3>The client pays. Nobody else does.</h3>
-        <p>No commission, trail, brokerage, referral fee or incentive from any manufacturer, platform or intermediary — ever. There is no distribution arm to feed, so there is nothing to sell you.</p>
+        <p class="kicker">Fee-only</p>
+        <h3>You pay us. No one else does.</h3>
+        <p>We earn nothing from any fund, policy or product we suggest. There is nothing for us to sell you.</p>
       </article>
       <article class="card">
-        <p class="kicker">02 — In writing</p>
-        <h3>Reasoning you can audit</h3>
-        <p>Advice is issued in writing against a documented risk profile, with the rationale, costs, risks and suitability assessment recorded each time — and kept on record for inspection.</p>
+        <p class="kicker">In writing</p>
+        <h3>Advice you can check</h3>
+        <p>Every recommendation comes with the reason behind it, what it costs, and what could go wrong.</p>
       </article>
       <article class="card">
-        <p class="kicker">03 — You stay in control</p>
-        <h3>Your accounts, your hands</h3>
-        <p>Direct, non-commission plans wherever they exist. You hold your own funds and securities and place every transaction yourself. We never hold assets, never execute, never ask for a credential or an OTP.</p>
+        <p class="kicker">Your money stays with you</p>
+        <h3>You stay in control</h3>
+        <p>You invest in your own accounts. We never hold your money, place trades for you, or ask for passwords or OTPs.</p>
       </article>
     </div>
   </div>
@@ -470,21 +503,11 @@ button.btn[disabled] { opacity: .55; cursor: progress; }
           <li>Repatriation and reporting checklist</li>
         </ul>
       </article>
-      <article class="card">
-        <p class="kicker">06 — Estate</p>
-        <h3>Estate &amp; documentation hygiene</h3>
-        <p>Nomination and joint-holding audit across every account, a document vault checklist, and a briefing note your family can act on. Drafting and registration of a will is done by a lawyer, not by MyFinancial.</p>
-        <ul>
-          <li>Nomination audit across folios and accounts</li>
-          <li>Document and credential checklist</li>
-          <li>Succession briefing for the family</li>
-        </ul>
-      </article>
     </div>
 
     <div class="warning" role="note">
       <span class="lbl">Scope of regulation</span>
-      Investment advice relating to securities falls under the purview of SEBI. Where a service touches products or matters that are not securities — insurance, bank deposits, real estate, income-tax filing, legal drafting or foreign assets — those products and MyFinancial's services in respect of them do not come under the regulatory purview of SEBI, and no recourse is available with SEBI for grievances relating to them. This is disclosed again in the advisory agreement and in the Most Important Terms and Conditions.
+      Investment advice relating to securities falls under the purview of SEBI. Where a service touches products or matters that are not securities — insurance, bank deposits, real estate, income-tax filing or foreign assets — those products and MyFinancial's services in respect of them do not come under the regulatory purview of SEBI, and no recourse is available with SEBI for grievances relating to them. This is disclosed again in the advisory agreement and in the Most Important Terms and Conditions.
     </div>
 
   </div>
@@ -1210,6 +1233,7 @@ button.btn[disabled] { opacity: .55; cursor: progress; }
   <div class="wrap foot-pad">
     <nav aria-label="Regulatory links">
       <ul class="foot-links">
+        <li><a href="#registration">Registration</a></li>
         <li><a href="#complaint-status">Complaint data</a></li>
         <li><a href="#charter">Investor Charter</a></li>
         <li><a href="#terms">MITC</a></li>
