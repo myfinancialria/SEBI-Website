@@ -1,9 +1,9 @@
 # MyFinancial — one-page site + admin
 
 ```
-index.html            the entire public website (one file, no build step, no external requests)
-data/complaints.json  monthly complaint figures the page reads on a static host
-data/site.json        the fill-in details (BASL number, UPI ID, audit status …)
+docs/index.html            the entire public website (one file, no build step, no external requests)
+docs/data/complaints.json  monthly complaint figures the page reads on a static host
+docs/data/site.json        the fill-in details (BASL number, UPI ID, audit status …)
 server/server.js      admin + database backend: Node, SQLite, zero npm dependencies
 server/admin.html     the admin panel
 ```
@@ -48,18 +48,18 @@ python3 -m http.server 8787
 
 ## The two ways to host this
 
-**A · Static only (GitHub Pages, what you use today).** Publish `index.html` and `data/`. The page reads
-`data/complaints.json`, and the enquiry form falls back to opening the visitor's email app with the
-details filled in. Each month you open the admin panel locally, enter the figures, click
-**Download complaints.json**, and commit it to `data/`.
+**A · Static only — this is what is live now.** GitHub Pages publishes the `docs/` folder at
+https://myfinancialria.github.io/SEBI-Website/. The page reads `docs/data/complaints.json`, and the enquiry
+form falls back to opening the visitor's email app with the details filled in. Each month you open the
+admin panel locally, enter the figures, click **Download complaints.json**, and commit it to `docs/data/`.
 
 **B · With the server (any Node host: Render, Railway, Fly, a VPS).** Run `server/server.js`. It serves
 the site *and* the admin panel, the page reads live figures from the database, and enquiries are stored
-and emailed. Nothing in `index.html` needs changing — it tries the API first and falls back to the JSON
+and emailed. Nothing in `docs/index.html` needs changing — it tries the API first and falls back to the JSON
 files, so the same file works either way.
 
 If the site stays on GitHub Pages and only the API is hosted elsewhere, set `API_BASE` at the top of the
-script in `index.html` to that origin, and set `ALLOW_ORIGIN=https://myfinancialria.github.io` on the
+script in `docs/index.html` to that origin, and set `ALLOW_ORIGIN=https://myfinancialria.github.io` on the
 server.
 
 ## Environment variables
@@ -90,7 +90,7 @@ host.
 ## Still to fill in
 
 Placeholders on the page carry a dotted amber underline. Most can be set from the admin panel's
-**Site details** tab; the rest are edits in `index.html`.
+**Site details** tab; the rest are edits in `docs/index.html`.
 
 | Where | What |
 |---|---|
@@ -98,7 +98,7 @@ Placeholders on the page carry a dotted amber underline. Most can be set from th
 | Site details (admin) | Validated `@valid` UPI ID once your bank issues it (an IA's username suffix is `.ia`) |
 | Site details (admin) | Compliance audit status and adverse findings |
 | Site details (admin) | Ongoing advisory fee line, "last updated" date |
-| `index.html` → Disclosures | The AI-use paragraph — rewrite it to describe what you actually do |
+| `docs/index.html` → Disclosures | The AI-use paragraph — rewrite it to describe what you actually do |
 | Complaint data (admin) | The figures, every month |
 
 ## The maintenance calendar
@@ -108,7 +108,7 @@ Placeholders on the page carry a dotted amber underline. Most can be set from th
 | By the **7th of every month** | Enter last month's complaint figures in the admin panel. On a static host, also download `complaints.json` and commit it. This is the most commonly cited website default at inspection |
 | By **31 October 2026** | Accessibility audit by an IAAP-certified professional and remediation of findings, reported to BSE Ltd (SEBI circular dated 31 July 2026) |
 | Within **6 months of each FY end** | Annual compliance audit — then publish the status and any adverse findings via Site details |
-| On any change | Registration validity, address, phone, email, Principal Officer — edit `index.html` |
+| On any change | Registration validity, address, phone, email, Principal Officer — edit `docs/index.html` |
 
 ## Accessibility
 
@@ -134,8 +134,8 @@ data under the DPDP Act, 2023.
 
 | File | What it is |
 |---|---|
-| `index.html` | The whole public website |
-| `data/*.json` | What the site reads on a static host |
+| `docs/index.html` | The whole public website — this folder is what GitHub Pages publishes |
+| `docs/data/*.json` | What the site reads on a static host |
 | `server/*` | Admin panel + database backend |
 | `ADMIN.md` | Running the admin panel, the monthly complaint update, and where enquiry data is stored |
 | `COMPLIANCE-MAP.md` | Each mandatory element → where it sits on the page → the SEBI paragraph it comes from |

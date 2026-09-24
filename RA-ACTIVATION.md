@@ -1,12 +1,12 @@
 # Switching the site to RIA + RA
 
-Every Research Analyst block is **already written into `index.html`** and sits in the page source today.
+Every Research Analyst block is **already written into `docs/index.html`** and sits in the page source today.
 It is hidden by one CSS rule, not by JavaScript, so nothing breaks if scripts are blocked and the content
 is there for anyone auditing the source.
 
 ## Step 1 — flip one attribute
 
-Line 2 of `index.html`:
+Line 2 of `docs/index.html`:
 
 ```html
 <html lang="en-IN" data-ra-status="pending">

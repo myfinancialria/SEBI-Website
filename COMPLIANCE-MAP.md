@@ -85,7 +85,7 @@ self-contained (`#complaint-status`). Deleting the strip instead is a five-line 
 
 ## C. Additional items that become mandatory when the RA registration is granted
 
-See `RA-ACTIVATION.md`. All of this content is already written into `index.html` and is revealed by
+See `RA-ACTIVATION.md`. All of this content is already written into `docs/index.html` and is revealed by
 one attribute change.
 
 | # | Requirement | Source |

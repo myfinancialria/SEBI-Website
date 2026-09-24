@@ -7,7 +7,7 @@
  *   2. serves the monthly complaint data the public page reads,
  *   3. serves a password-protected admin panel to edit both.
  *
- *   node server/server.js           # http://localhost:8080  (site + /admin)
+ *   node server/server.js           # http://localhost:8080  (docs/ + /admin)
  *
  * Environment:
  *   ADMIN_PASSWORD   required to log in to /admin (default "change-me" — change it)
@@ -30,7 +30,7 @@ import { fileURLToPath } from "node:url";
 import path from "node:path";
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
-const ROOT = path.resolve(HERE, "..");
+const ROOT = path.resolve(HERE, "..", "docs");   // the public website; GitHub Pages serves the same folder
 const PORT = Number(process.env.PORT || 8080);
 const DB_PATH = process.env.DB_PATH || path.join(HERE, "data.db");
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "change-me";
@@ -290,9 +290,7 @@ async function serveStatic(req, res, urlPath) {
     return send(res, 200, html, { "Content-Type": MIME[".html"], "Cache-Control": "no-store" });
   }
   const full = path.join(ROOT, rel);
-  if (!full.startsWith(ROOT) || full.includes(path.join(ROOT, "server", "data.db"))) {
-    return send(res, 403, { error: "forbidden" });
-  }
+  if (!full.startsWith(ROOT)) return send(res, 403, { error: "forbidden" });
   try {
     const info = await stat(full);
     if (!info.isFile()) throw new Error("not a file");

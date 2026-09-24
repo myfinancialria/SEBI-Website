@@ -75,11 +75,11 @@ header, the full Annexure C table in the complaints section, the six-month trend
 total. They are all computed from the same record, so they cannot disagree with each other.
 
 **If the site is on GitHub Pages** (no server running), add one step: click **Download complaints.json**
-and commit the file to `data/complaints.json`. That file is what the published page reads.
+and commit the file to `docs/data/complaints.json`. That file is what the published page reads.
 
 ```bash
-cp ~/Downloads/complaints.json data/complaints.json
-git add data/complaints.json
+cp ~/Downloads/complaints.json docs/data/complaints.json
+git add docs/data/complaints.json
 git commit -m "Complaint data for <month>"
 git push
 ```
@@ -143,7 +143,7 @@ membership number, validated `@valid` UPI ID, compliance-audit status and advers
 advisory fee line, and the "last updated" date.
 
 It also carries the **Research Analyst** switch. When your RA registration is granted, set it to `active`
-here *and* change `data-ra-status="pending"` to `"active"` in `index.html` — the HTML attribute is what
+here *and* change `data-ra-status="pending"` to `"active"` in `docs/index.html` — the HTML attribute is what
 makes the RA disclosures independent of JavaScript. See `RA-ACTIVATION.md`.
 
 ---
@@ -160,7 +160,7 @@ Any Node host works (Render, Railway, Fly, a small VPS). Whatever you choose:
 - mount a persistent disk for `server/data.db`, or the database resets on every deploy;
 - if the website stays on GitHub Pages and only the API is hosted, set
   `ALLOW_ORIGIN=https://myfinancialria.github.io` on the server and `API_BASE` at the top of the script in
-  `index.html` to the API's origin.
+  `docs/index.html` to the API's origin.
 
 Built-in protections: password-only login with a timing-safe check and a ten-attempt limit per ten
 minutes, HTTP-only session cookies that expire after eight hours, five enquiries per hour per IP address,
