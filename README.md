@@ -53,7 +53,8 @@ https://myfinancialria.github.io/SEBI-Website/. The page reads `docs/data/compla
 form falls back to opening the visitor's email app with the details filled in. Each month you open the
 admin panel locally, enter the figures, click **Download complaints.json**, and commit it to `docs/data/`.
 
-**B · With the server (any Node host: Render, Railway, Fly, a VPS).** Run `server/server.js`. It serves
+**B · With the server (any Node host: Render, Railway, Fly, a VPS).** `DEPLOY.md` has the step-by-step,
+and `render.yaml` in this repo makes it a five-minute Blueprint deploy. Run `server/server.js`. It serves
 the site *and* the admin panel, the page reads live figures from the database, and enquiries are stored
 and emailed. Nothing in `docs/index.html` needs changing — it tries the API first and falls back to the JSON
 files, so the same file works either way.
@@ -67,6 +68,7 @@ server.
 | Variable | What it does |
 |---|---|
 | `ADMIN_PASSWORD` | Password for `/admin`. **Set this** — the default is `change-me` |
+| `HOST` | Interface to bind. Default `0.0.0.0` (what a host needs); use `127.0.0.1` to keep it to this machine |
 | `PORT` | Default 8080 |
 | `DB_PATH` | Default `server/data.db` |
 | `ALLOW_ORIGIN` | Comma-separated origins allowed to post enquiries cross-origin |
@@ -138,5 +140,6 @@ data under the DPDP Act, 2023.
 | `docs/data/*.json` | What the site reads on a static host |
 | `server/*` | Admin panel + database backend |
 | `ADMIN.md` | Running the admin panel, the monthly complaint update, and where enquiry data is stored |
+| `DEPLOY.md` | Giving the admin panel its own public URL, and why it cannot live on GitHub Pages |
 | `COMPLIANCE-MAP.md` | Each mandatory element → where it sits on the page → the SEBI paragraph it comes from |
 | `RA-ACTIVATION.md` | The one-line change that switches on every Research Analyst block |

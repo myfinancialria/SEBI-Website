@@ -1,0 +1,45 @@
+# Render blueprint for the admin panel + API.
+#
+# Render reads this file when you create a Blueprint from this repository.
+# It gives the admin panel a public HTTPS URL of its own, separate from the
+# website that GitHub Pages publishes.
+#
+# Free plan: no disk, so server/data.db is wiped on every deploy and restart.
+# Turn on email notification (SMTP_* below) so every enquiry also reaches your
+# inbox, and keep committing complaint figures to docs/data/complaints.json.
+# To keep the database, move to a paid instance and uncomment the disk block.
+
+services:
+  - type: web
+    name: myfinancial-admin
+    runtime: node
+    plan: free
+    region: singapore
+    branch: main
+    buildCommand: ""                       # nothing to build: no dependencies
+    startCommand: node server/server.js
+    healthCheckPath: /api/site
+    envVars:
+      - key: NODE_VERSION
+        value: "22.11.0"                   # node:sqlite needs 22.5 or newer
+      - key: ADMIN_PASSWORD
+        sync: false                        # set this in the Render dashboard, never here
+      - key: ALLOW_ORIGIN
+        value: https://myfinancialria.github.io
+      # - key: DB_PATH                     # with a disk, keep the database on it
+      #   value: /var/data/data.db
+      # - key: SMTP_HOST
+      #   value: smtp.gmail.com
+      # - key: SMTP_PORT
+      #   value: "465"
+      # - key: SMTP_USER
+      #   sync: false
+      # - key: SMTP_PASS
+      #   sync: false
+      # - key: SMTP_TO
+      #   sync: false
+
+    # disk:                                # paid plans only
+    #   name: data
+    #   mountPath: /var/data
+    #   sizeGB: 1

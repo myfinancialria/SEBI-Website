@@ -11,6 +11,7 @@
  *
  * Environment:
  *   ADMIN_PASSWORD   required to log in to /admin (default "change-me" — change it)
+ *   HOST             interface to bind, default 0.0.0.0; use 127.0.0.1 for this machine only
  *   PORT             default 8080
  *   DB_PATH          default server/data.db
  *   ALLOW_ORIGIN     comma-separated origins allowed to POST enquiries from another
@@ -23,6 +24,7 @@
 
 import { createServer } from "node:http";
 import { readFile, stat } from "node:fs/promises";
+import { mkdirSync } from "node:fs";
 import { DatabaseSync } from "node:sqlite";
 import { createHash, randomBytes, timingSafeEqual } from "node:crypto";
 import { connect as tlsConnect } from "node:tls";
@@ -32,6 +34,7 @@ import path from "node:path";
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(HERE, "..", "docs");   // the public website; GitHub Pages serves the same folder
 const PORT = Number(process.env.PORT || 8080);
+const HOST = process.env.HOST || "0.0.0.0";   // set HOST=127.0.0.1 to keep it to this machine
 const DB_PATH = process.env.DB_PATH || path.join(HERE, "data.db");
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "change-me";
 const ALLOW_ORIGIN = (process.env.ALLOW_ORIGIN || "").split(",").map((s) => s.trim()).filter(Boolean);
@@ -42,6 +45,7 @@ const SITE_KEYS = ["basl_no", "upi_id", "audit_status", "audit_findings", "fee_o
 
 /* ------------------------------------------------------------------ database */
 
+mkdirSync(path.dirname(DB_PATH), { recursive: true });   // a mounted disk may start empty
 const db = new DatabaseSync(DB_PATH);
 db.exec(`
   PRAGMA journal_mode = WAL;
@@ -437,7 +441,7 @@ const server = createServer(async (req, res) => {
   }
 });
 
-server.listen(PORT, () => {
+server.listen(PORT, HOST, () => {
   console.log("MyFinancial server on http://localhost:" + PORT);
   console.log("  site   http://localhost:" + PORT + "/");
   console.log("  admin  http://localhost:" + PORT + "/admin");
