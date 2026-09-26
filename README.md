@@ -46,6 +46,16 @@ To preview the site alone, without the admin, any static server will do:
 python3 -m http.server 8787
 ```
 
+## Where it is live
+
+**https://myfinancial.in/** — since 26 Sep 2026 the one-pager is the home page of the main MyFinancial
+app (`myfinancialria/myfinancial-ui`, AWS Amplify). That app serves this page as a static file, runs the
+same API under `/sebi/api/*` (DynamoDB table `myfinancial-sebi-site`, enquiries emailed via SES), and
+serves the admin panel at **https://myfinancial.in/sebi/admin** (password: the app's `ADMIN_PASSWORD`).
+Edit the pages **here**, then run `scripts/sync-sebi-site.sh` in `myfinancial-ui` and deploy it.
+In the same revamp the blog was paused (URL `/blog` kept) and taxation kept its own unlinked URL
+(`/file-itr`).
+
 ## The two ways to host this
 
 **A · Static only — this is what is live now.** GitHub Pages publishes the `docs/` folder at

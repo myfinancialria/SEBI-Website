@@ -96,8 +96,8 @@ strong { font-weight: 650; }
 
 /* ---------- layout ---------- */
 section { border-top: 1px solid var(--line); }
-.sec-pad { padding: 52px 0 56px; }
-@media (min-width: 720px) { .sec-pad { padding: 68px 0 72px; } }
+.sec-pad { padding-block: 52px 56px; }
+@media (min-width: 720px) { .sec-pad { padding-block: 68px 72px; } }
 .sec-head { max-width: 72ch; }
 .sec-head p { color: var(--ink-dim); }
 
@@ -127,7 +127,7 @@ section { border-top: 1px solid var(--line); }
 
 /* ---------- header ---------- */
 .site-header { position: sticky; top: 0; z-index: 50; background: var(--paper); border-bottom: 1px solid var(--line); }
-.hrow { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 22px; padding: 11px 0; }
+.hrow { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 22px; padding-block: 11px; }
 .logo { font-family: var(--font-serif); font-style: italic; font-size: 19px; letter-spacing: -.02em; text-decoration: none; flex-shrink: 0; }
 .logo b { font-family: var(--font-sans); font-style: normal; font-weight: 800; letter-spacing: -.04em; }
 .site-nav ul { display: flex; flex-wrap: wrap; gap: 2px 4px; list-style: none; margin: 0; padding: 0; }
@@ -202,7 +202,7 @@ table.reg tr.total th, table.reg tr.total td { font-weight: 700; color: var(--in
 
 /* footer */
 .site-footer { border-top: 1px solid var(--line); background: var(--paper-3); }
-.foot-pad { padding: 44px 0 52px; }
+.foot-pad { padding-block: 44px 52px; }
 .foot-links { display: flex; flex-wrap: wrap; gap: 8px 20px; list-style: none; margin: 0 0 26px; padding: 0; font-size: 13px; }
 .foot-grid { display: grid; gap: 26px; }
 @media (min-width: 760px) { .foot-grid { grid-template-columns: 1.15fr 1fr; gap: 40px; } }
@@ -221,8 +221,8 @@ html:not([data-ra-status="active"]) [data-ra] { display: none; }
 html[data-ra-status="active"] [data-ria-only] { display: none; }
 
 /* ---------- compact hero so the complaint band stays in the first screen ---------- */
-.hero-pad { padding: 34px 0 30px; }
-@media (min-width: 720px) { .hero-pad { padding: 44px 0 34px; } }
+.hero-pad { padding-block: 34px 30px; }
+@media (min-width: 720px) { .hero-pad { padding-block: 44px 34px; } }
 
 /* ---------- one-line complaint status, kept in the first screen ---------- */
 .statusbar { background: var(--paper-3); border-bottom: 1px solid var(--line); }
